@@ -1,4 +1,6 @@
 import { writable } from 'svelte/store';
+
+import * as components from './components';
 import core from './core';
 import type { ThemeConfig, ThemeDirection } from './theme.types';
 
@@ -12,6 +14,7 @@ const config: ThemeConfig = {
 
 export const theme = {
 	direction,
+	components,
 	...core,
 	config
 };
