@@ -1,6 +1,8 @@
 import { mode, transparentize } from '$lib/utils';
 
 const baseStyle = {
+	cursor: 'pointer',
+	border: 'none',
 	lineHeight: '1.2',
 	borderRadius: 'md',
 	fontWeight: 'semibold',
