@@ -1,40 +1,28 @@
-# create-svelte
+# Welcome to chakra-ui-svelte 👋
+> An implementation of Chakra Ui in Svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
+[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](#)
+[![Twitter: iamelcharitas](https://img.shields.io/twitter/follow/iamelcharitas.svg?style=social)](https://twitter.com/iamelcharitas)
+[Homepage](https://github.com/elcharitas/chakra-ui-svelte)
+[Demo](https://chakra-ui-svelte.vercel.app)
 
-## Creating a project
+## Install
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
+```sh
+pnpm install chakra-ui-svelte
 ```
 
-> Note: the `@next` is temporary
 
-## Developing
+## Author
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+👤 **elcharitas**
 
-```bash
-npm run dev
+* Website: https://elcharitas.dev
+* Twitter: [@iamelcharitas](https://twitter.com/iamelcharitas)
+* Github: [@elcharitas](https://github.com/elcharitas)
+* LinkedIn: [@elcharitas](https://linkedin.com/in/elcharitas)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Show your support
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Give a ⭐️ if this project helped you!
