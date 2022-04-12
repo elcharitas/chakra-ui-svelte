@@ -1,4 +1,5 @@
 export * from './buttons/index.js';
+export * from './stacks/index.js';
 export { default as Box } from './Box.svelte';
 export { default as Icon } from './Icon.svelte';
 export { default as Link } from './Link.svelte';
