@@ -3,7 +3,7 @@
     import { injectGlobal } from '$lib/core';
     import { theme as baseTheme, themeStore } from '$lib/theme';
 
-    export let theme = {};
+    export let theme = baseTheme;
 
     themeStore.set(theme);
 
@@ -12,10 +12,7 @@
             margin: 0,
             padding: 0,
         },
-        ':host, :root, [data-theme]': toCSSVar({
-            ...baseTheme,
-            ...theme
-        }).__cssVars
+        ':host, :root, [data-theme]': toCSSVar(theme).__cssVars
     });
 </script>
 
