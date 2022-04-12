@@ -13,6 +13,10 @@
 pnpm install chakra-ui-svelte
 ```
 
+```js
+import { Box } from "chakra-ui-svelte";
+```
+
 
 ## Author
 
