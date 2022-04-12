@@ -8,7 +8,7 @@ export function styled<T>(node: HTMLElement, props: T) {
 		const componentStyles = {
 			colorScheme: props.colorScheme
 		};
-		const component = theme?.components[props.as];
+		const component = theme?.components[props.apply || props.as];
 		if (typeof component === 'object') {
 			const { baseStyle, variants, sizes, defaultProps } = component;
 			const { variant = defaultProps?.variant, size = defaultProps?.size } = props;
