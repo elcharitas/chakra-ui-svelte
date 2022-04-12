@@ -16,6 +16,7 @@ specifiers:
   prettier-plugin-svelte: ^2.5.0
   svelte: ^3.47.0
   svelte-check: ^2.2.6
+  svelte-icons: ^2.1.0
   svelte-preprocess: ^4.10.1
   svelte2tsx: ^0.5.8
   tslib: ^2.3.1
@@ -25,6 +26,9 @@ dependencies:
   '@babel/core': 7.17.9
   '@chakra-ui/styled-system': 1.19.0
   '@emotion/css': 11.9.0_@babel+core@7.17.9
+
+optionalDependencies:
+  svelte-icons: 2.1.0
 
 devDependencies:
   '@playwright/test': 1.20.2
@@ -2890,6 +2894,12 @@ packages:
     dependencies:
       svelte: 3.47.0
     dev: true
+
+  /svelte-icons/2.1.0:
+    resolution: {integrity: sha512-rHPQjweEc9fGSnvM0/4gA3pDHwyZyYsC5KhttCZRhSMJfLttJST5Uq0B16Czhw+HQ+HbSOk8kLigMlPs7gZtfg==}
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /svelte-preprocess/4.10.5_28025311b071e619d7cde48ee7c0ac73:
     resolution: {integrity: sha512-VKXPRScCzAZqeBZOGq4LLwtNrAu++mVn7XvQox3eFDV7Ciq0Lg70Q8QWjH9iXF7J+pMlXhPsSFwpCb2E+hoeyA==}
