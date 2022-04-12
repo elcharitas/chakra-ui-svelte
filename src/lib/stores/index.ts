@@ -1,1 +1,1 @@
-export * from './colormode';
+export * from './colormode.js';

@@ -1,6 +1,6 @@
 import { css, toCSSVar } from '@chakra-ui/styled-system';
-import { theme } from '$lib/theme';
-import { system, cx } from './emotion';
+import { theme } from '$lib/theme/index.js';
+import { system, cx } from './emotion.js';
 
 export function styled<T>(node: HTMLElement, props: T) {
 	function update(props) {

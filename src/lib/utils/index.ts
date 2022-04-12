@@ -1,1 +1,2 @@
-export * from './theme-tools';
+export * from './store.js';
+export * from './theme-tools.js';

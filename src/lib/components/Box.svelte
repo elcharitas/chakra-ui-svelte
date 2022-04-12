@@ -1,5 +1,5 @@
 <script>
-	import { styled } from '$lib/core';
+	import { styled } from '$lib/core/index.js';
 	export let as = 'div';
 </script>
 

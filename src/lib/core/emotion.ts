@@ -1,5 +1,5 @@
 import createEmotion from '@emotion/css/create-instance';
-import { theme } from '$lib/theme';
+import { theme } from '$lib/theme/index.js';
 
 export const {
 	cx,

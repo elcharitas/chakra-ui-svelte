@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
-import * as components from './components';
-import core from './core';
-import type { ThemeConfig, ThemeDirection } from './theme.types';
+import * as components from './components/index.js';
+import core from './core/index.js';
+import type { ThemeConfig, ThemeDirection } from './theme.types.js';
 
 const direction: ThemeDirection = 'ltr';
 
@@ -26,5 +26,5 @@ themeStore.subscribe((newTheme) => {
 	Object.assign(theme, newTheme);
 });
 
-export * from './theme.types';
+export * from './theme.types.js';
 export default theme;
