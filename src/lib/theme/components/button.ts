@@ -1,4 +1,4 @@
-import { colorModeValue, transparentize } from '$lib/utils/index.js';
+import { mode, transparentize } from '$lib/utils/index.js';
 
 const baseStyle = {
 	cursor: 'pointer',
@@ -28,11 +28,11 @@ const variantGhost = (props) => {
 
 	if (c === 'gray') {
 		return {
-			color: colorModeValue(`inherit`, `whiteAlpha.900`),
+			color: mode(`inherit`, `whiteAlpha.900`),
 			_hover: {
-				bg: colorModeValue(`gray.100`, `whiteAlpha.200`)
+				bg: mode(`gray.100`, `whiteAlpha.200`)
 			},
-			_active: { bg: colorModeValue(`gray.200`, `whiteAlpha.300`) }
+			_active: { bg: mode(`gray.200`, `whiteAlpha.300`) }
 		};
 	}
 
@@ -40,20 +40,20 @@ const variantGhost = (props) => {
 	const darkActiveBg = transparentize(`${c}.200`, 0.24)(theme);
 
 	return {
-		color: colorModeValue(`${c}.600`, `${c}.200`),
+		color: mode(`${c}.600`, `${c}.200`),
 		bg: 'transparent',
 		_hover: {
-			bg: colorModeValue(`${c}.50`, darkHoverBg)
+			bg: mode(`${c}.50`, darkHoverBg)
 		},
 		_active: {
-			bg: colorModeValue(`${c}.100`, darkActiveBg)
+			bg: mode(`${c}.100`, darkActiveBg)
 		}
 	};
 };
 
 const variantOutline = (props) => {
 	const { colorScheme: c } = props;
-	const borderColor = colorModeValue(`gray.200`, `whiteAlpha.300`);
+	const borderColor = mode(`gray.200`, `whiteAlpha.300`);
 	return {
 		border: '1px solid',
 		borderColor: c === 'gray' ? borderColor : 'currentColor',
@@ -81,17 +81,17 @@ const variantSolid = (props) => {
 	const { colorScheme: c } = props;
 
 	if (c === 'gray') {
-		const bg = colorModeValue(`gray.100`, `whiteAlpha.200`);
+		const bg = mode(`gray.100`, `whiteAlpha.200`);
 
 		return {
 			bg,
 			_hover: {
-				bg: colorModeValue(`gray.200`, `whiteAlpha.300`),
+				bg: mode(`gray.200`, `whiteAlpha.300`),
 				_disabled: {
 					bg
 				}
 			},
-			_active: { bg: colorModeValue(`gray.300`, `whiteAlpha.400`) }
+			_active: { bg: mode(`gray.300`, `whiteAlpha.400`) }
 		};
 	}
 
@@ -102,18 +102,18 @@ const variantSolid = (props) => {
 		activeBg = `${c}.700`
 	} = accessibleColorMap[c] ?? {};
 
-	const background = colorModeValue(bg, `${c}.200`);
+	const background = mode(bg, `${c}.200`);
 
 	return {
 		bg: background,
-		color: colorModeValue(color, `gray.800`),
+		color: mode(color, `gray.800`),
 		_hover: {
-			bg: colorModeValue(hoverBg, `${c}.300`),
+			bg: mode(hoverBg, `${c}.300`),
 			_disabled: {
 				bg: background
 			}
 		},
-		_active: { bg: colorModeValue(activeBg, `${c}.400`) }
+		_active: { bg: mode(activeBg, `${c}.400`) }
 	};
 };
 
@@ -124,7 +124,7 @@ const variantLink = (props) => {
 		height: 'auto',
 		lineHeight: 'normal',
 		verticalAlign: 'baseline',
-		color: colorModeValue(`${c}.500`, `${c}.200`),
+		color: mode(`${c}.500`, `${c}.200`),
 		_hover: {
 			textDecoration: 'underline',
 			_disabled: {
@@ -132,7 +132,7 @@ const variantLink = (props) => {
 			}
 		},
 		_active: {
-			color: colorModeValue(`${c}.700`, `${c}.500`)
+			color: mode(`${c}.700`, `${c}.500`)
 		}
 	};
 };

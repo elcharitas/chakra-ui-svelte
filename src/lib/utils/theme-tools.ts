@@ -2,24 +2,13 @@ import type { Theme } from '$lib/theme/index.js';
 import { colorMode } from '$lib/stores/index.js';
 
 /**
- * Here is a function similar to useColorModeValue
- *
- * @param light
- * @param dark
- * @returns
- */
-export const colorModeValue = (light: unknown, dark: unknown) =>
-	colorMode.get() === 'dark' ? dark : light;
-
-/**
- * @deprecated
  * Returns the value based on current theme color mode.
  *
  * @param light
  * @param dark
  * @returns
  */
-export const mode = (light: unknown, dark: unknown) => () => colorModeValue(light, dark);
+export const mode = (light: unknown, dark: unknown) => (colorMode.get() == 'light' ? light : dark);
 
 /**
  * Makes colors transparent
