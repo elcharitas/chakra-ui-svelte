@@ -3,6 +3,6 @@
 	export let spacing = 2;
 </script>
 
-<Stack {spacing}>
+<Stack {spacing} orientation="vertical">
 	<slot />
 </Stack>
