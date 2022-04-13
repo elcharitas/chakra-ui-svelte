@@ -4,8 +4,8 @@ import { system, cx } from './emotion.js';
 
 export function styled<T>(node: HTMLElement, props: T) {
 	function update(props) {
-		const className = createClass(props);
-		node.classList.add(className);
+		const className = createClass(props, props.class);
+		node.className = className;
 	}
 
 	update(props);
@@ -13,7 +13,7 @@ export function styled<T>(node: HTMLElement, props: T) {
 	return { update };
 }
 
-export function createClass(props) {
+export function createClass(props, ...classList: string[]) {
 	const themeVars = toCSSVar(theme);
 	const componentStyles = {
 		colorScheme: props.colorScheme
@@ -36,5 +36,5 @@ export function createClass(props) {
 	const componentCSS = css(componentStyles)(themeVars);
 	const baseName = system(baseCSS);
 	const componentClassName = system(componentCSS);
-	return cx(componentClassName, baseName);
+	return cx(componentClassName, baseName, ...classList);
 }
