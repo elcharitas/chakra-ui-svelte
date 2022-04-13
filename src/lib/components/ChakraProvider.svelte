@@ -1,7 +1,6 @@
 <script>
 	import { toCSSVar } from '@chakra-ui/styled-system';
-	import { injectGlobal } from '$lib/core/index.js';
-	import { theme as baseTheme, themeStore } from '$lib/theme/index.js';
+	import { theme as baseTheme, themeStore, injectGlobal } from '$lib/index.js';
 
 	export let theme = baseTheme;
 

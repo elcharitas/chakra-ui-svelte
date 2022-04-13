@@ -1,4 +1,4 @@
-import { colorModeValue, transparentize } from '$lib/utils';
+import { colorModeValue, transparentize } from '$lib/utils/index.js';
 
 const baseStyle = {
 	cursor: 'pointer',

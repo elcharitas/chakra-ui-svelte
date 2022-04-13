@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Box from './Box.svelte';
+	import type { SvelteComponent } from 'svelte';
 	import { current_component } from 'svelte/internal';
 	import { eventsForward } from '$lib/core/index.js';
-	import type { SvelteComponent } from 'svelte';
+	import Box from './Box.svelte';
 
 	const events = eventsForward(current_component);
 	export let as: typeof SvelteComponent | string = 'svg';

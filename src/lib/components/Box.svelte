@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { current_component, onMount } from 'svelte/internal';
-	import { eventsForward, styled } from '$lib/core/index.js';
 	import type { SvelteComponent } from 'svelte';
+	import { current_component, onMount } from 'svelte/internal';
+	import { eventsForward, styled, pick } from '$lib/index.js';
 
 	export let events = eventsForward(current_component);
 	export let as: typeof SvelteComponent | string = 'div';
