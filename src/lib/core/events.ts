@@ -61,7 +61,7 @@ export function eventsForward(component: SvelteComponent, additionalEvents: stri
 		const destructors = [];
 
 		events.forEach((event) => {
-			if (node instanceof Element) {
+			if (node.addEventListener) {
 				destructors.push(listen(node, event, forward));
 			}
 		});
