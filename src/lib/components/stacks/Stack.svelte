@@ -5,7 +5,7 @@
 
 	const events = eventsForward(current_component);
 
-	export const spacing: number = 2;
+	export const spacing: string | number = 2;
 	export const orientation: 'horizontal' | 'vertical' = 'horizontal';
 </script>
 
@@ -14,6 +14,7 @@
 	display="flex"
 	flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
 	flexWrap="wrap"
+	gap={spacing}
 	{events}
 	{...$$props}
 >
