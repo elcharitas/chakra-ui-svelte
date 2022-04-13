@@ -1,4 +1,15 @@
 import type { Theme } from '$lib/theme/index.js';
+import { colorMode } from '$lib/stores/index.js';
+
+/**
+ * Here is a function similar to useColorModeValue
+ *
+ * @param light
+ * @param dark
+ * @returns
+ */
+export const colorModeValue = (light: unknown, dark: unknown) =>
+	colorMode.get() === 'dark' ? dark : light;
 
 /**
  * Returns the value based on current theme color mode.
@@ -7,8 +18,7 @@ import type { Theme } from '$lib/theme/index.js';
  * @param dark
  * @returns
  */
-export const mode = (light: unknown, dark: unknown) => (props: { colorMode: 'light' | 'dark' }) =>
-	props.colorMode === 'dark' ? dark : light;
+export const mode = (light: unknown, dark: unknown) => () => colorModeValue(light, dark);
 
 /**
  * Makes colors transparent
@@ -19,7 +29,7 @@ export const mode = (light: unknown, dark: unknown) => (props: { colorMode: 'lig
  */
 export const transparentize = (color: string, opacity: number) => (theme: Theme) => {
 	return (
-		theme.colors[color]
+		theme?.colors[color]
 			?.replace(/^#/, '')
 			.replace(/([0-9a-f]{2})/g, '$1 ')
 			.trim() +
