@@ -12,6 +12,7 @@ export const colorModeValue = (light: unknown, dark: unknown) =>
 	colorMode.get() === 'dark' ? dark : light;
 
 /**
+ * @deprecated
  * Returns the value based on current theme color mode.
  *
  * @param light
