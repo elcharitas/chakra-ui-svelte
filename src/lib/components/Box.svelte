@@ -20,7 +20,7 @@
 </script>
 
 {#if typeof as === 'string'}
-	<svelte:element this={as} use:styled={$$props} {...props} use:events>
+	<svelte:element this={as} {...props} use:styled={$$props} use:events>
 		<slot />
 	</svelte:element>
 {:else if typeof as !== 'string'}
