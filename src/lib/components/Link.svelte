@@ -4,8 +4,9 @@
 	import { eventsForward } from '$lib/core/index.js';
 
 	const events = eventsForward(current_component);
+	export let href = '#';
 </script>
 
-<Box as="a" {events} {...$$props}>
+<Box as="a" apply="Link" props={{ href }} {events} {...$$props}>
 	<slot />
 </Box>
