@@ -2,7 +2,7 @@
 	import { current_component } from 'svelte/internal';
 	import { eventsForward } from '$lib/core/index.js';
 
-	import Box from '$lib/components/Box.svelte';
+	import Box from '$lib/components/basic/Box.svelte';
 
 	const events = eventsForward(current_component);
 </script>
