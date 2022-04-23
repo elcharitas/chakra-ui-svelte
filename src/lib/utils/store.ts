@@ -10,21 +10,16 @@ export type StoreCallback<T> = () => T;
  * @returns
  */
 export function createStore<T>(
-	initialValue: T | StoreCallback<T>,
+	initialValue: StoreCallback<T>,
 	subscription: (value: T) => void = () => null
 ) {
-	if (initialValue instanceof Function) {
-		initialValue = initialValue();
-	}
-	const { subscribe, set, update } = writable(initialValue);
-	subscribe(subscription);
+	const initial = initialValue();
+	const store = writable(initial);
+	store.subscribe(subscription);
 
 	return {
-		subscribe,
-		set,
-		update,
-		get() {
-			return get(this);
-		}
+		initial,
+		get: get.bind({}, store),
+		...store
 	};
 }
