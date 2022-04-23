@@ -4,7 +4,7 @@
 	import { eventsForward, chakra, colorMode, pick, omit, type Dict } from '$lib/index.js';
 
 	export let events = eventsForward(current_component);
-	export let as: typeof SvelteComponent | string = 'div';
+	export let as: SvelteComponent | string = 'div';
 	export let colormode = $colorMode;
 	export const apply: string = 'Box';
 	export let props = {};

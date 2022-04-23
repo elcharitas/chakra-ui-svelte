@@ -5,7 +5,10 @@
 	import Box from './Box.svelte';
 
 	const events = eventsForward(current_component);
-	export let as: typeof SvelteComponent | string = 'svg';
+	export let as: SvelteComponent | string = 'svg';
+	export let viewBox = '0 0 24 24';
+	export let fill = 'none';
+	export let stroke = 'currentColor';
 
 	const styles = {
 		w: '1em',
@@ -15,12 +18,10 @@
 		flexShrink: 0,
 		color: 'currentColor'
 	};
-
-	const viewBox = '0 0 24 24';
 </script>
 
 {#if typeof as === 'string'}
-	<Box {as} props={{ viewBox, ariaHidden: true }} {events} {...styles} {...$$props}>
+	<Box {as} props={{ viewBox, ariaHidden: true, fill, stroke }} {events} {...styles} {...$$props}>
 		<slot />
 	</Box>
 {:else if typeof as !== 'string'}
