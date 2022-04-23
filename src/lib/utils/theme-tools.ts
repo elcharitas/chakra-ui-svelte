@@ -1,5 +1,4 @@
 import type { Theme } from '$lib/theme/index.js';
-import { colorMode } from '$lib/stores/index.js';
 
 /**
  * Returns the value based on current theme color mode.
@@ -8,7 +7,8 @@ import { colorMode } from '$lib/stores/index.js';
  * @param dark
  * @returns
  */
-export const mode = (light: unknown, dark: unknown) => (colorMode.get() == 'light' ? light : dark);
+export const mode = (light: unknown, dark: unknown) => (props) =>
+	props.colormode == 'dark' ? dark : light;
 
 /**
  * Makes colors transparent

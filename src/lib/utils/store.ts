@@ -1,6 +1,6 @@
-import { writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 
-type StoreCallback<T> = () => T;
+export type StoreCallback<T> = () => T;
 
 /**
  * Creates a custom store for use by Chakra UI Svelte
@@ -17,18 +17,14 @@ export function createStore<T>(
 		initialValue = initialValue();
 	}
 	const { subscribe, set, update } = writable(initialValue);
-
-	subscribe((val) => {
-		initialValue = val;
-		subscription(val);
-	});
+	subscribe(subscription);
 
 	return {
 		subscribe,
 		set,
 		update,
 		get() {
-			return initialValue;
+			return get(this);
 		}
 	};
 }
