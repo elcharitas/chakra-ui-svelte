@@ -2,7 +2,7 @@ import { css, toCSSVar } from '@chakra-ui/styled-system';
 import { theme } from '$lib/theme/index.js';
 import { system, cx } from './emotion.js';
 
-export function styled<T>(node: HTMLElement, props: T) {
+export function chakra<T>(node: HTMLElement, props: T) {
 	function update(props) {
 		const className = createClass(props, props.class);
 		node.className = className;

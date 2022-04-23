@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SvelteComponent } from 'svelte';
 	import { current_component, onMount } from 'svelte/internal';
-	import { eventsForward, styled, pick, omit, type Dict } from '$lib/index.js';
+	import { eventsForward, chakra, pick, omit, type Dict } from '$lib/index.js';
 
 	export let events = eventsForward(current_component);
 	export let as: typeof SvelteComponent | string = 'div';
@@ -20,7 +20,7 @@
 </script>
 
 {#if typeof as === 'string'}
-	<svelte:element this={as} {...props} use:styled={$$props} use:events>
+	<svelte:element this={as} {...props} use:chakra={$$props} use:events>
 		<slot />
 	</svelte:element>
 {:else if typeof as !== 'string'}
