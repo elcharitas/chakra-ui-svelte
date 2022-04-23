@@ -1,4 +1,4 @@
-import { derived, writable } from 'svelte/store';
+import { derived } from 'svelte/store';
 import { createStore } from '$lib/utils/index.js';
 import { browser } from '$app/env';
 
@@ -34,7 +34,7 @@ export const isDarkMode = derived(colorMode, (colorMode) => colorMode === 'dark'
  * @returns
  */
 export const colorModeValue = (light: unknown, dark: unknown) => {
-	const store = writable(light);
+	const store = createStore(() => light);
 	colorMode.subscribe((val) => {
 		store.set(val === 'light' ? light : dark);
 	});
