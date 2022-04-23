@@ -1,11 +1,30 @@
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import { createStore } from '$lib/utils/index.js';
 import { browser } from '$app/env';
 
-export const colorMode = createStore<'light' | 'dark'>(() => {
-	const option = browser ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-	return option?.matches ? 'dark' : 'light'; // default to light mode
-});
+type ColorMode = 'light' | 'dark';
+
+export const colorMode = createStore<ColorMode>(
+	() => {
+		let mode: ColorMode = 'light';
+
+		if (browser) {
+			const system = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			const storage = window?.localStorage.getItem('chakra-ui-color-mode') === 'dark';
+			mode = system || storage ? 'dark' : 'light';
+		}
+
+		return mode;
+	},
+	(mode) => {
+		if (browser) {
+			window?.localStorage.setItem('chakra-ui-color-mode', mode);
+		}
+	}
+);
+
+/** Checks if current colorMode is 'dark' or 'light' */
+export const isDarkMode = derived(colorMode, (colorMode) => colorMode === 'dark');
 
 /**
  * Here is a function similar to useColorModeValue
