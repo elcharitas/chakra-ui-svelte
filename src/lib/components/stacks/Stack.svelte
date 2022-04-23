@@ -1,22 +1,14 @@
 <script lang="ts">
-	import Box from '$lib/components/basic/Box.svelte';
+	import Flex from './Flex.svelte';
 	import { current_component } from 'svelte/internal';
 	import { eventsForward } from '$lib/core/index.js';
 
 	const events = eventsForward(current_component);
 
 	export const spacing: string | number = 2;
-	export const orientation: 'horizontal' | 'vertical' = 'horizontal';
+	export const orientation: 'horizontal' | 'vertical' = null;
 </script>
 
-<Box
-	as="div"
-	display="flex"
-	flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
-	flexWrap="wrap"
-	gap={spacing}
-	{events}
-	{...$$props}
->
+<Flex gap={spacing} direction={orientation === 'vertical' ? 'column' : 'row'} {events} {...$$props}>
 	<slot />
-</Box>
+</Flex>
