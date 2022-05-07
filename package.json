@@ -1,6 +1,6 @@
 {
 	"name": "chakra-ui-svelte",
-	"version": "0.0.1-next.3",
+	"version": "0.0.2",
 	"type": "module",
 	"main": "./index.js",
 	"scripts": {
