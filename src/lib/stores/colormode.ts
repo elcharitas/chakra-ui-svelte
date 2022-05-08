@@ -5,10 +5,16 @@ type ColorMode = 'light' | 'dark';
 
 export const colorMode = createStore<ColorMode>(
 	() => {
-		const system = window?.matchMedia('(prefers-color-scheme: dark)').matches;
-		const storage = window?.localStorage.getItem('chakra-ui-color-mode') === 'dark';
+		let mode: ColorMode = 'light';
 
-		return system || storage ? 'dark' : 'light';
+		if (typeof window !== 'undefined') {
+			const system = window?.matchMedia('(prefers-color-scheme: dark)').matches;
+			const storage = window?.localStorage.getItem('chakra-ui-color-mode') === 'dark';
+
+			system || storage ? 'dark' : 'light';
+		}
+
+		return mode;
 	},
 	(mode) => {
 		if (typeof window !== 'undefined') {
