@@ -1,23 +1,17 @@
 import { derived } from 'svelte/store';
 import { createStore } from '$lib/utils/index.js';
-import { browser } from '$app/env';
 
 type ColorMode = 'light' | 'dark';
 
 export const colorMode = createStore<ColorMode>(
 	() => {
-		let mode: ColorMode = 'light';
+		const system = window?.matchMedia('(prefers-color-scheme: dark)').matches;
+		const storage = window?.localStorage.getItem('chakra-ui-color-mode') === 'dark';
 
-		if (browser) {
-			const system = window.matchMedia('(prefers-color-scheme: dark)').matches;
-			const storage = window?.localStorage.getItem('chakra-ui-color-mode') === 'dark';
-			mode = system || storage ? 'dark' : 'light';
-		}
-
-		return mode;
+		return system || storage ? 'dark' : 'light';
 	},
 	(mode) => {
-		if (browser) {
+		if (typeof window !== 'undefined') {
 			window?.localStorage.setItem('chakra-ui-color-mode', mode);
 		}
 	}
