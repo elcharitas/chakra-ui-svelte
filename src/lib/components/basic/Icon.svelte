@@ -9,6 +9,9 @@
 	export let viewBox = '0 0 24 24';
 	export let fill = 'none';
 	export let stroke = 'currentColor';
+	export let strokeWidth = '2';
+	export let strokeLinecap = 'round';
+	export let strokeLinejoin = 'round';
 
 	const styles = {
 		w: '1em',
@@ -21,7 +24,21 @@
 </script>
 
 {#if typeof as === 'string'}
-	<Box {as} props={{ viewBox, ariaHidden: true, fill, stroke }} {events} {...styles} {...$$props}>
+	<Box
+		{as}
+		{events}
+		props={{
+			viewBox,
+			ariaHidden: true,
+			fill,
+			stroke,
+			strokeWidth,
+			strokeLinecap,
+			strokeLinejoin
+		}}
+		{...styles}
+		{...$$props}
+	>
 		<slot />
 	</Box>
 {:else if typeof as !== 'string'}
