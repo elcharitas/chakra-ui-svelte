@@ -3,7 +3,7 @@ import brandImage from './storybook-logo.svg';
 
 export default create({
 	base: 'light',
-	brandTitle: 'Chakra UI',
+	brandTitle: 'Chakra UI Svelte',
 	brandUrl: 'https://chakra-ui.com',
 	brandImage
 });
