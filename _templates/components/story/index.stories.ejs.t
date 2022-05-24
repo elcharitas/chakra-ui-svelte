@@ -1,11 +1,11 @@
 ---
-to: src/lib/components/<%= component %>.stories.js
+to: src/lib/components/<%= name %>.stories.js
 ---
-import <%= component.split('/').reverse()[0] %> from './<%= component %>.stories.svelte';
+import <%= name.split('/').reverse()[0] %> from './<%= component %>.stories.svelte';
 
 export default {
-  component: <%= component.split('/').reverse()[0] %>,
-  title: <%= component.split('/').reverse()[0] %>,
+  component: <%= name.split('/').reverse()[0] %>,
+  title: <%= name.split('/').reverse()[0] %>,
   argTypes: {
       // lots of options here
   },

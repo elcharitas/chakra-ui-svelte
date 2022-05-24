@@ -1,5 +1,5 @@
 ---
-to: src/lib/components/<%= component %>.svelte
+to: src/lib/components/<%= name %>.svelte
 ---
 <script lang="ts">
     import { onMount, onDestroy, current_component } from "svelte/internal";
@@ -7,6 +7,10 @@ to: src/lib/components/<%= component %>.svelte
 	import Box from '$lib/components/basic/Box.svelte';
 
 	const events = eventsForward(current_component);
+
+    const props = {
+
+    }
 
 	onMount(() => {
         // mount logic goes here
@@ -17,6 +21,10 @@ to: src/lib/components/<%= component %>.svelte
     });
 </script>
 
-<Box>
+<Box
+    apply="<%= name.split('/').reverse()[0] %>"
+    {props}
+    {events}
+    {...$$props}>
 
 </Box>
