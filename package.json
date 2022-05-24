@@ -12,6 +12,7 @@
 		"storybook": "start-storybook -p 4000",
 		"build-storybook": "build-storybook",
 		"create:component": "hygen components create",
+		"create:story": "hygen components story",
 		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
