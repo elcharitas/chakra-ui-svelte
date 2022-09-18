@@ -1,4 +1,4 @@
-import { spacing } from './spacing.js';
+import { spacing } from './spacing';
 
 const largeSizes = {
 	max: 'max-content',

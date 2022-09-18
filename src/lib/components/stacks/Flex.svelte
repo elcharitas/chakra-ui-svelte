@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Box from '$lib/components/basic/Box.svelte';
 	import { current_component } from 'svelte/internal';
-	import { eventsForward } from '$lib/core/index.js';
+	import { eventsForward } from '$lib/core';
 
 	const events = eventsForward(current_component);
 

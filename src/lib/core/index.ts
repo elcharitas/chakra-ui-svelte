@@ -1,3 +1,3 @@
-export * from './styled.js';
-export * from './emotion.js';
-export * from './events.js';
+export * from './styled';
+export * from './emotion';
+export * from './events';

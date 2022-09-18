@@ -1,5 +1,5 @@
 import { derived } from 'svelte/store';
-import { createStore } from '$lib/utils/index.js';
+import { createStore } from '$lib/utils';
 
 type ColorMode = 'light' | 'dark';
 

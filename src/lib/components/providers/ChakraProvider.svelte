@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { toCSSVar } from '@chakra-ui/styled-system';
-	import { theme as baseTheme, themeStore, injectGlobal } from '$lib/index.js';
+	import { theme as baseTheme, themeStore, injectGlobal } from '$lib';
 
 	export let theme = baseTheme;
 	export let isMounted = false;

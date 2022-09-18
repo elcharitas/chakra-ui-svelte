@@ -1,3 +1,3 @@
-export * from './object.js';
-export * from './store.js';
-export * from './theme-tools.js';
+export * from './object';
+export * from './store';
+export * from './theme-tools';

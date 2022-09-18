@@ -1,4 +1,4 @@
-import type { Theme } from '$lib/theme/index.js';
+import type { Theme } from '$lib/theme';
 
 /**
  * Returns the value based on current theme color mode.

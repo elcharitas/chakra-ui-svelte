@@ -1,14 +1,14 @@
-import borders from './borders.js';
-import breakpoints from './breakpoints.js';
-import colors from './colors.js';
-import radii from './radius.js';
-import shadows from './shadows.js';
-import sizes from './sizes.js';
-import { spacing } from './spacing.js';
-import transition from './transition.js';
-import typography from './typography.js';
-import zIndices from './z-index.js';
-import blur from './blur.js';
+import borders from './borders';
+import breakpoints from './breakpoints';
+import colors from './colors';
+import radii from './radius';
+import shadows from './shadows';
+import sizes from './sizes';
+import { spacing } from './spacing';
+import transition from './transition';
+import typography from './typography';
+import zIndices from './z-index';
+import blur from './blur';
 
 const core = {
 	breakpoints,

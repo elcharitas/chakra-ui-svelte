@@ -1,5 +1,5 @@
 import type { SvelteComponentTyped } from 'svelte';
-import colors from './theme/core/colors.js';
+import colors from './theme/core/colors';
 
 type PropValue<T = number> = T | string;
 type isPropValue = 'true' | 'false' | boolean;
@@ -127,7 +127,7 @@ export class AsyncSelect extends Box {}
 export class Avatar extends Box {}
 export class Badge extends Box {}
 
-export * from './core/index.js';
-export * from './theme/index.js';
-export * from './utils/index.js';
-export * from './stores/index.js';
+export * from './core';
+export * from './theme';
+export * from './utils';
+export * from './stores';
