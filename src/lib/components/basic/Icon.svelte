@@ -1,11 +1,10 @@
-<script lang="ts">
-	import type { SvelteComponent } from 'svelte';
+<script>
 	import { current_component } from 'svelte/internal';
 	import { eventsForward } from '$lib/core';
 	import Box from './Box.svelte';
 
 	const events = eventsForward(current_component);
-	export let as: SvelteComponent | string = 'svg';
+	export let as = 'svg';
 	export let viewBox = '0 0 24 24';
 	export let fill = 'none';
 	export let stroke = 'currentColor';

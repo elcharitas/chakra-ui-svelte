@@ -1,21 +1,20 @@
-<script lang="ts">
-	import type { SvelteComponent } from 'svelte';
+<script>
 	import { current_component, onMount } from 'svelte/internal';
-	import { eventsForward, chakra, colorMode, pick, omit, type Dict } from '$lib';
+	import { eventsForward, chakra, colorMode, pick, omit } from '$lib';
 
 	export let events = eventsForward(current_component);
-	export let as: SvelteComponent | string = 'div';
+	export let as = 'div';
 	export let colormode = $colorMode;
-	export const apply: string = 'Box';
+	export const apply = 'Box';
 	export let props = {};
 
-	let bound: EventTarget | SvelteComponent;
+	let bound;
 	onMount(() => {
 		if (bound) {
-			events(bound as EventTarget);
+			events(bound);
 		}
 		const el = document.createElement(typeof as === 'string' ? as : 'div');
-		const baseProps = pick($$props, Object.keys((el as unknown as Dict).__proto__));
+		const baseProps = pick($$props, Object.keys(el.__proto__));
 		props = { colormode, ...omit(baseProps, ['toString']), ...props };
 	});
 </script>
