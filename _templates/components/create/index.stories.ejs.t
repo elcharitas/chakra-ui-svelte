@@ -1,30 +1,20 @@
 ---
-to: src/lib/components/<%= name %>.stories.svelte
+to: src/lib/components/<%= name %>.stories.js
 ---
-<script lang="ts">
-    import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-    import <%= name.split('/').reverse()[0] %> from '$lib/components/<%= name %>.svelte';
-</script>
+import <%= name.split('/').reverse()[0] %> from '$lib/components/<%= name %>.svelte';
 
-<Meta
-  title="<%= name %>"
-  component={<%= name.split('/').reverse()[0] %>}
-  argTypes={{
-    label: { control: "text" },
-    primary: { control: "boolean" },
-    backgroundColor: { control: "color" },
-    size: {
-      control: { type: "select", options: ["small", "medium", "large"] },
-    },
-    onClick: { action: "onClick" },
-  }}
-/>
+export default {
+	title: 'Components/<%= name.split('/').reverse()[0] %>',
+	component: <%= name.split('/').reverse()[0] %>,
+	parameters: {
+		// More on Story layout: https://storybook.js.org/docs/svelte/configure/story-layout
+		layout: 'fullscreen'
+	}
+};
 
-<Template let:args>
-  <<%= name.split('/').reverse()[0] %> {...args} on:click={args.onClick} />
-</Template>
+const Template = (args) => ({
+	Component: <%= name.split('/').reverse()[0] %>,
+	props: args
+});
 
-<Story
-  name="Primary"
-  args={{}}
-/>
+export const Simple<%= name.split('/').reverse()[0] %> = Template.bind({});
