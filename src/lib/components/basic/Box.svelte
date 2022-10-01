@@ -7,6 +7,7 @@
 	export let colormode = $colorMode;
 	export const apply = 'Box';
 	export let props = {};
+	export let sx = {};
 
 	let bound;
 	onMount(() => {
@@ -15,12 +16,17 @@
 		}
 		const el = document.createElement(typeof as === 'string' ? as : 'div');
 		const baseProps = pick($$props, Object.keys(el.__proto__));
-		props = { colormode, ...omit(baseProps, ['toString']), ...props };
+		props = {
+			colormode,
+			...omit(baseProps, ['toString']),
+			...props,
+			...sx
+		};
 	});
 </script>
 
 {#if typeof as === 'string'}
-	<svelte:element this={as} {...props} use:chakra={$$props} use:events>
+	<svelte:element this={as} use:chakra={$$props} use:events>
 		<slot />
 	</svelte:element>
 {:else if typeof as !== 'string'}

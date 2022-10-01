@@ -12,13 +12,11 @@
 	export let strokeLinecap = 'round';
 	export let strokeLinejoin = 'round';
 
-	const styles = {
-		w: '1em',
-		h: '1em',
+	export let sx = {
 		display: 'inline-block',
 		lineHeight: '1em',
 		flexShrink: 0,
-		color: 'currentColor'
+		color: 'red'
 	};
 </script>
 
@@ -33,13 +31,14 @@
 			stroke,
 			strokeWidth,
 			strokeLinecap,
-			strokeLinejoin
+			strokeLinejoin,
+			width: '0.5em',
+			height: '0.5em'
 		}}
-		{...styles}
 		{...$$props}
 	>
 		<slot />
 	</Box>
 {:else if typeof as !== 'string'}
-	<Box {as} {events} {...styles} {...$$props} />
+	<Box {as} {events} {sx} fill="red" {...$$props} />
 {/if}

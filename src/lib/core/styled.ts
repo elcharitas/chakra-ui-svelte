@@ -33,8 +33,10 @@ export function createClass(props, ...classList: string[]) {
 		});
 	}
 	const baseCSS = css(props)(themeVars);
+	const sxCss = css(props.sx || {})(themeVars);
 	const componentCSS = css(componentStyles)(themeVars);
 	const baseName = system(baseCSS);
+	const sxName = system(sxCss);
 	const componentClassName = system(componentCSS);
-	return cx(componentClassName, baseName, ...classList);
+	return cx(componentClassName, baseName, sxName, ...classList);
 }
