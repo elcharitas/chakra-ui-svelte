@@ -1,36 +1,31 @@
-<script>
-	import { current_component, onMount } from 'svelte/internal';
-	import { eventsForward, chakra, colorMode, pick, omit } from '$lib';
+<script lang="ts">
+	import { current_component } from 'svelte/internal';
+	import { eventsForward, chakra, createStyle, omit } from '$lib';
 
 	export let events = eventsForward(current_component);
-	export let as = 'div';
-	export let colormode = $colorMode;
+	export let as: any = 'div';
 	export const apply = 'Box';
+	export let wrap: boolean | string = false;
 	export let props = {};
 	export let sx = {};
 
-	let bound;
-	onMount(() => {
-		if (bound) {
-			events(bound);
-		}
-		const el = document.createElement(typeof as === 'string' ? as : 'div');
-		const baseProps = pick($$props, Object.keys(el.__proto__));
-		props = {
-			colormode,
-			...omit(baseProps, ['toString']),
-			...props,
-			...sx
-		};
-	});
+	const styles = createStyle({ sx, ...props });
 </script>
 
 {#if typeof as === 'string'}
-	<svelte:element this={as} use:chakra={$$props} use:events>
+	<svelte:element this={as} use:chakra={$$props} use:events {...props}>
 		<slot />
 	</svelte:element>
 {:else if typeof as !== 'string'}
-	<svelte:component this={as} {colormode} bind:this={bound} on:click>
-		<slot />
-	</svelte:component>
+	{#if wrap}
+		<div class={styles} use:events {...props}>
+			<svelte:component this={as}>
+				<slot />
+			</svelte:component>
+		</div>
+	{:else}
+		<svelte:component this={as} class={styles} {...props}>
+			<slot />
+		</svelte:component>
+	{/if}
 {/if}
