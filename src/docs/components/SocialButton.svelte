@@ -8,7 +8,7 @@
 <Link {href} {target} {rel}>
 	<Button>
 		<VisuallyHidden>{label}</VisuallyHidden>
-		<Icon as={SocialIcon} width="10px" />
+		<Icon as={SocialIcon} wrap="div" />
 		<slot />
 	</Button>
 </Link>

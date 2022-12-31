@@ -61,7 +61,8 @@ type DimensionProps = {
 };
 
 type ChakraComponentProps = DimensionProps & {
-	as?: PropValue<keyof HTMLElementTagNameMap> | SvelteComponentTyped;
+	as?: keyof HTMLElementTagNameMap | SvelteComponentTyped;
+	wrap: boolean | keyof HTMLElementTagNameMap;
 	size?: PropSizes;
 	fontSize?: PropSizes;
 	fontFamily?: PropValue<string>;
