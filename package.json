@@ -8,7 +8,7 @@
 		"build": "svelte-kit sync && svelte-package",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
-		"create:component": "hygen components create",
+		"create:component": "hygen create component",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
