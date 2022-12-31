@@ -5,8 +5,8 @@
 	"main": "./index.js",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "svelte-kit sync && svelte-package",
-		"package": "svelte-kit package",
+		"build": "svelte-kit sync && vite build",
+		"package": "svelte-kit sync && svelte-kit package",
 		"preview": "svelte-kit preview",
 		"create:story": "hygen create storybook",
 		"create:component": "hygen create component",
