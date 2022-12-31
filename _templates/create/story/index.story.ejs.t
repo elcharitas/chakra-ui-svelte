@@ -6,13 +6,13 @@ import <%= name.split('/').reverse()[0] %> from './<%= name.split('/').reverse()
 import { logEvent } from 'histoire/client';
 
 export let Hst;
-let content = 'Lorem Ipsum';
+let content = 'Lorem Ipsum...';
 </script>
 
-<Hst.Story>
-  <Hst.Variant>
-    <<%= name.split('/').reverse()[0] %>>
-      {content}
-    </<%= name.split('/').reverse()[0] %>>
-  </Hst.Variant>
+<Hst.Story id="<%= name.toLowerCase() %>">
+    <Hst.Variant>
+        <<%= name.split('/').reverse()[0] %>>
+            {content}
+        </<%= name.split('/').reverse()[0] %>>
+    </Hst.Variant>
 </Hst.Story>
