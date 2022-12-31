@@ -11,7 +11,6 @@
 <Box
 	{size}
 	br="50%"
-	apply="Spinner"
 	border="16px solid"
 	borderColor={color}
 	animation="spin 2s linear infinite"

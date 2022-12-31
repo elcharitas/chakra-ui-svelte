@@ -5,11 +5,15 @@ type ColorMode = 'light' | 'dark';
 
 export const colorMode = createStore<ColorMode>(
 	() => {
-		let mode: ColorMode = 'light';
+		const mode: ColorMode = 'light';
 
 		if (typeof window !== 'undefined') {
-			const system = window?.matchMedia('(prefers-color-scheme: dark)').matches;
-			const storage = window?.localStorage.getItem('chakra-ui-color-mode') === 'dark';
+			/** When running in histoire, it seems `window` is defined but it's props aren't implemented
+			 * Thus we need to catch this error by assuming all window APIs are undefined.
+			 * This is a quick fix till we can get something better.
+			 */
+			const system = window?.matchMedia?.('(prefers-color-scheme: dark)').matches;
+			const storage = window?.localStorage?.getItem('chakra-ui-color-mode') === 'dark';
 
 			system || storage ? 'dark' : 'light';
 		}
@@ -18,7 +22,7 @@ export const colorMode = createStore<ColorMode>(
 	},
 	(mode) => {
 		if (typeof window !== 'undefined') {
-			window?.localStorage.setItem('chakra-ui-color-mode', mode);
+			window?.localStorage?.setItem('chakra-ui-color-mode', mode);
 		}
 	}
 );
