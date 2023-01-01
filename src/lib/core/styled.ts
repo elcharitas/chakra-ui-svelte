@@ -39,7 +39,6 @@ export function extractComponentStyles(props) {
  * @returns
  */
 export function createStyle(props) {
-	console.log('sx', props);
 	const themeVars = toCSSVar(theme);
 	const componentCSS = css(props)(themeVars);
 	const sxCss = css(props.sx)(themeVars);
