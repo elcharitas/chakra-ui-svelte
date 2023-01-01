@@ -7,7 +7,7 @@
 		"dev": "vite dev",
 		"build": "svelte-kit sync && vite build",
 		"package": "svelte-kit sync && svelte-kit package",
-		"preview": "svelte-kit preview",
+		"preview": "vite preview",
 		"create:story": "hygen create story",
 		"create:component": "hygen create component",
 		"test": "playwright test",
