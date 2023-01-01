@@ -2,7 +2,7 @@
 	import Icon from './Icon.svelte';
 </script>
 
-<Icon viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<Icon viewBox="0 0 998 257" fill="none" xmlns="http://www.w3.org/2000/svg" sx={{ width: '152px' }}>
 	<slot>
 		<rect width="52" height="52" rx="26" fill="url(#paint0_linear)" />
 		<path
