@@ -6,16 +6,15 @@ export default defineConfig({
 		groups: [
 			{
 				id: 'top',
-				title: 'About'
+				title: 'Basics'
 			},
 			{
 				id: 'components',
-				title: 'Components',
-				include: () => true
+				title: 'Components'
 			},
 			{
-				title: 'Utilities',
-				include: () => true
+				id: 'utils',
+				title: 'Utilities'
 			}
 		]
 	},
@@ -24,6 +23,11 @@ export default defineConfig({
 		logoHref: 'https://chakra-ui-svelte.vercel.app',
 		colors: {
 			primary: defaultColors.green
+		},
+		logo: {
+			square: './assets/logo-square.svg',
+			dark: './assets/logo-dark.svg',
+			light: './assets/logo-light.svg'
 		}
 	},
 	plugins: [HstSvelte()]
