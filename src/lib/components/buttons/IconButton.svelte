@@ -5,9 +5,10 @@
 	import Icon from '$lib/components/basic/Icon.svelte';
 
 	export let icon;
+    export let wrap = "div";
 	const events = eventsForward(current_component);
 </script>
 
 <Button {events} {...$$props}>
-	<Icon as={icon} />
+	<Icon as={icon} {wrap} />
 </Button>
