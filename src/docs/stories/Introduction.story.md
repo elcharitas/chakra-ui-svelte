@@ -1,7 +1,8 @@
 ---
 group: 'top'
 icon: 'carbon:composer-edit'
-title: Get Started
+title: Introduction
+id: introduction
 ---
 
-# Get Started
+# Introduction
