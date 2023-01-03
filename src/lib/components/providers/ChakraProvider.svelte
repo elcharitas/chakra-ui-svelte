@@ -6,14 +6,14 @@
 	export let theme = baseTheme;
 	export let isMounted = false;
 
-	themeStore.set(theme);
+	themeStore.set({ ...baseTheme, ...theme });
 
 	injectGlobal({
 		'html, body': {
 			margin: 0,
 			padding: 0
 		},
-		':host, :root, [data-theme]': toCSSVar(theme).__cssVars
+		':host, :root, [data-theme]': toCSSVar($themeStore).__cssVars
 	});
 
 	onMount(() => {
