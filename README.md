@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./static/logo-square.svg" />
+    <img src="./static/logo-light.svg" style="max-height: 120px" />
 </div>
 
 # Chakra UI `svelte` 👋
