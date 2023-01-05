@@ -4,7 +4,7 @@
 	export let Hst;
 </script>
 
-<Hst.Story id="anims/spinner">
+<Hst.Story group="components" id="anims/spinner">
 	<Hst.Variant>
 		<Spinner />
 	</Hst.Variant>
