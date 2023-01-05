@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { current_component } from 'svelte/internal';
-	import { eventsForward, chakra, createStyle, omit } from '$lib';
+	import { eventsForward, createStyle, chakra } from '$lib/core';
 
 	export let events = eventsForward(current_component);
 	export let as: any = 'div';
