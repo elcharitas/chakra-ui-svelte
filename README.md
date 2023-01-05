@@ -1,29 +1,61 @@
-# Welcome to chakra-ui-svelte 👋
+<div align="center">
+    <img src="./static/logo-square.svg" />
+</div>
 
-> An implementation of Chakra Ui in Svelte
+# Chakra UI `svelte` 👋
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
+## Build Accessible Svelte Apps with Speed
+
+[![npm version](https://badge.fury.io/js/chakra-ui-svelte.svg)](https://www.npmjs.com/package/chakra-ui-svelte)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](#)
-[![Twitter: iamelcharitas](https://img.shields.io/twitter/follow/iamelcharitas.svg?style=social)](https://twitter.com/iamelcharitas)
-[Homepage](https://github.com/elcharitas/chakra-ui-svelte)
-[Demo](https://chakra-svelte.vercel.app)
+[![iamelcharitas](https://img.shields.io/twitter/follow/iamelcharitas.svg?style=)](https://twitter.com/iamelcharitas)
 
-## Install
+Chakra UI provides a set of accessible, reusable, and composable Svelte components that make it super easy to create websites and apps.
+
+## Features 🚀
+
+- Ease of Styling: Chakra UI contains a set of layout components like Box and Stack that make it easy to style your components by passing props.
+- Flexible & composable: Chakra UI components are built to be adaptable and extended.
+- Accessible. Chakra UI components follow the WAI-ARIA guidelines specifications and have the right aria-\* attributes.
+- Out the box support for Dark Mode 😍: Most components in Chakra UI are dark mode compatible.
+
+## Installation
+
+To use Chakra UI components, all you need to do is install the `chakra-ui-svelte` package and (optionally) its peer dependencies:
 
 ```sh
-pnpm install chakra-ui-svelte
+$ yarn add chakra-ui-svelte svelte-icons
+
+# or
+
+$ npm i chakra-ui-svelte svelte-icons
+
+# or
+
+$ pnpm install chakra-ui-svelte svelte-icons
 ```
 
+## Usage
+
+To start using the components, please follow these steps:
+
+- Wrap your application with the `ChakraProvider`
+
 ```html
+// page.svelte
 <script>
-	import { Box, Button, ChakraProvider } from 'chakra-ui-svelte';
+  import { ChakraProvider } from 'chakra-ui-svelte';
+  import App from './App.svelte';
 </script>
 
 <ChakraProvider>
-	<Box color="red">Chakra UI Svelte</Box>
-	<button>Test Button</button>
+  <App />
 </ChakraProvider>
 ```
+
+- The provider is essential as it injects generated styles into your svelte app.
+
+## Supported Components
 
 The latest release has the following components
 
@@ -34,13 +66,20 @@ The latest release has the following components
 - Text
 - VisuallyHidden
 - Button
-- IconButton - IconButton is still buggy and proper documentation is not yet available
+- IconButton
+- RippleButton
 - Flex
 - Stack
 - HStack
 - VStack
+- Spinner
+- Loader
 
-Documentation would be available soon
+Complete Documentation would be available soon
+
+## Contributing
+
+Feel like contributing? That's awesome! There's a contributing guide to help guide you.
 
 ## Author
 
