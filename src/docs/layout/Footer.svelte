@@ -5,9 +5,12 @@
 	import SocialButton from '../components/SocialButton.svelte';
 	import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
 	import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
+
+	const bg = colorModeValue('gray.50', 'gray.900');
+	const color = colorModeValue('gray.700', 'gray.200');
 </script>
 
-<Box bg={colorModeValue('gray.50', 'gray.900')} color={colorModeValue('gray.700', 'gray.200')}>
+<Box bg={$bg} color={$color}>
 	<Stack
 		py={4}
 		orientation="horizontal"
