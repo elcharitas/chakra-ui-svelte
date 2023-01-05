@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { current_component } from 'svelte/internal';
-	import { eventsForward, createStyle, chakra } from '$lib/core';
+	import { eventsForward, createStyle, chakra, forwardAttributes } from '$lib/core';
 
 	export let events = eventsForward(current_component);
 	export let as: any = 'div';
@@ -10,21 +10,28 @@
 	export let sx = {};
 
 	const styles = createStyle({ sx, ...props });
+	// this provides a fine grained control over the component's props
+	const attributes = forwardAttributes(as, $$props);
 </script>
 
 {#if typeof as === 'string'}
-	<svelte:element this={as} use:chakra={$$props} use:events {...props}>
+	<svelte:element this={as} use:chakra={$$props} use:events use:attributes>
 		<slot />
 	</svelte:element>
 {:else if typeof as !== 'string'}
 	{#if wrap}
-		<div class={styles} use:events {...props}>
+		<div class={styles} use:events use:attributes>
 			<svelte:component this={as}>
 				<slot />
 			</svelte:component>
 		</div>
 	{:else}
-		<svelte:component this={as} class={styles} {...props}>
+		<!--
+            Components behave differently from elements.
+            However, we'd like to add support for them.
+            For now, we'll just pass the props to the component.
+        -->
+		<svelte:component this={as} class={styles} {...$$props}>
 			<slot />
 		</svelte:component>
 	{/if}
