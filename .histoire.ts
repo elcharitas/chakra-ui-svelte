@@ -25,9 +25,9 @@ export default defineConfig({
 			primary: defaultColors.green
 		},
 		logo: {
-			square: './assets/logo-square.svg',
-			dark: './assets/logo-dark.svg',
-			light: './assets/logo-light.svg'
+			square: './static/logo-square.svg',
+			dark: './static/logo-dark.svg',
+			light: './static/logo-light.svg'
 		}
 	},
 	plugins: [HstSvelte()]
