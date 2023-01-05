@@ -1,6 +1,8 @@
 ---
 group: 'components'
-icon: 'carbon:bookmark'
+icon: 'carbon:composer-edit'
+title: Box
+id: basic/box
 ---
 
-Welcome
+## Box
