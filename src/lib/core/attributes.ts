@@ -11,14 +11,14 @@
  * @param props The props to forward
  */
 export const forwardAttributes = (as: string, props: Record<string, string>) => {
-	let attributes: string[] = [];
-	if (typeof as === 'string') {
+	let attributes: string[] = ['title', 'viewBox', 'xmlns', 'd', 'fill', 'stroke'];
+	if (typeof as === 'string' && typeof document !== 'undefined') {
 		const element = document.createElement(as);
-		attributes = Object.keys(Object.getPrototypeOf(element));
+		attributes = [...attributes, ...Object.keys(Object.getPrototypeOf(element))];
 	}
 	return (node: Element) => {
 		attributes.forEach((attr) => {
-			if (props[attr]) {
+			if (props[attr] && typeof props[attr] !== 'function') {
 				node.setAttribute(attr, props[attr]);
 			}
 		});
