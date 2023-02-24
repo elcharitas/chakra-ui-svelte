@@ -1,4 +1,5 @@
 import type { Theme } from '$lib/theme';
+type Dict = Record<string, any>;
 
 /**
  * Returns the value based on current theme color mode.
@@ -7,8 +8,12 @@ import type { Theme } from '$lib/theme';
  * @param dark
  * @returns
  */
-export const mode = (light: unknown, dark: unknown) => (props) =>
+export const mode = <T extends unknown>(light: T, dark: T): ((props) => T) => (props) =>
 	props.colormode == 'dark' ? dark : light;
+
+export const getColor = (theme: Dict, color: string, fallback?: string) => {
+	return theme?.colors[color] || fallback;
+};
 
 /**
  * Makes colors transparent
