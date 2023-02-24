@@ -11,6 +11,21 @@ export function omit<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
 	return result as Omit<T, K>;
 }
 
+export function filter<T extends Dict>(
+	object: T,
+	predicate: (value: T[keyof T], key: keyof T) => boolean
+) {
+	const result = {} as T;
+	Object.keys(object)
+		.filter((key: keyof T) => {
+			return predicate(object[key], key);
+		})
+		.forEach((key: keyof T) => {
+			result[key] = object[key];
+		});
+	return result;
+}
+
 export function pick<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
 	const result = {} as { [P in K]: T[P] };
 

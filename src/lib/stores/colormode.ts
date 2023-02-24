@@ -12,10 +12,9 @@ export const colorMode = createStore<ColorMode>(
 			 * Thus we need to catch this error by assuming all window APIs are undefined.
 			 * This is a quick fix till we can get something better.
 			 */
-			const system = window?.matchMedia?.('(prefers-color-scheme: dark)').matches;
 			const storage = window?.localStorage?.getItem('chakra-ui-color-mode') === 'dark';
 
-			system || storage ? 'dark' : 'light';
+			return storage ? 'dark' : 'light';
 		}
 
 		return mode;

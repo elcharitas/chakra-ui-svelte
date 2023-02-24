@@ -1,6 +1,7 @@
 import { css, toCSSVar } from '@chakra-ui/styled-system';
 import { theme } from '$lib/theme';
 import { system, cx } from './emotion';
+import { filter } from '../utils/object';
 
 /**
  * A Chakra UI Svelte component can be created to inherit styles using the `apply` prop.
@@ -26,7 +27,7 @@ export function extractComponentStyles(props) {
 			...componentStyles,
 			...baseStyle,
 			...sizeStyle,
-			...variants?.[variant](componentStyles)
+			...variants?.[variant]?.(componentStyles)
 		};
 	}
 	return componentStyles;
@@ -52,10 +53,11 @@ export function createStyle(props) {
  * @returns
  */
 export function createClass(props, ...classList: string[]) {
+	const safeProps = filter(props, (value) => typeof value !== 'function');
 	const themeVars = toCSSVar(theme);
 	const componentStyles = extractComponentStyles(props);
-	const baseCSS = css(props)(themeVars);
-	const sxCss = css(props.sx || {})(themeVars);
+	const baseCSS = css(safeProps)(themeVars);
+	const sxCss = css(safeProps.sx || {})(themeVars);
 	const componentCSS = css(componentStyles)(themeVars);
 	return cx(system(componentCSS), system(baseCSS), system(sxCss), ...classList);
 }
