@@ -19,7 +19,7 @@ export function createStore<T>(
 
 	return {
 		initial,
-		get: get.bind({}, store),
+		get: get.bind({}, store) as T,
 		...store
 	};
 }
