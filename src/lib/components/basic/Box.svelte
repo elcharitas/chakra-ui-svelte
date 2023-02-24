@@ -4,7 +4,7 @@
 
 	export let events = eventsForward(current_component);
 	export let as: any = 'div';
-	export const apply = 'Box';
+	export const apply: string = 'Box';
 	export let wrap: boolean | string = false;
 	export let props = {};
 	export let sx = {};
@@ -20,11 +20,16 @@
 	</svelte:element>
 {:else if typeof as !== 'string'}
 	{#if wrap}
-		<div class={styles} use:events use:attributes>
+		<svelte:element
+			this={wrap !== true ? wrap : 'div'}
+			use:chakra={$$props}
+			use:events
+			use:attributes
+		>
 			<svelte:component this={as}>
 				<slot />
 			</svelte:component>
-		</div>
+		</svelte:element>
 	{:else}
 		<!--
             Components behave differently from elements.
