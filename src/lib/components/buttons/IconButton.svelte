@@ -4,8 +4,8 @@
 	import Button from './Button.svelte';
 	import Icon from '$lib/components/basic/Icon.svelte';
 
-	export let icon;
-    export let wrap = "div";
+	export let icon: string;
+	export let wrap = 'div';
 	const events = eventsForward(current_component);
 </script>
 

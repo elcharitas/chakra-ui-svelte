@@ -1,11 +1,16 @@
 <script lang="ts">
-	import { ChakraProvider } from '$lib/components';
+	import { ThemeProvider, Box, Container } from '$lib/components';
 	import Navbar from '$docs/layout/Navbar.svelte';
 	import Footer from '$docs/layout/Footer.svelte';
+	import { bg, color } from '../stores';
 </script>
 
-<ChakraProvider>
-	<Navbar />
-	<slot />
-	<Footer />
-</ChakraProvider>
+<ThemeProvider>
+	<Box bg={$bg} color={$color} minH="100vh">
+		<Navbar />
+		<Container>
+			<slot />
+		</Container>
+		<Footer />
+	</Box>
+</ThemeProvider>
