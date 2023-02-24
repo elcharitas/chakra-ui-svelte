@@ -1,32 +1,36 @@
 <script>
-	import { Box, Stack, Text } from '$lib/components';
-	import { colorModeValue } from '$lib/stores';
-
-	import SocialButton from '../components/SocialButton.svelte';
+	import { Box, Stack, Text, Link } from '$lib/components';
 	import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
 	import FaGithub from 'svelte-icons/fa/FaGithub.svelte';
+	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
+	import FaEmail from 'svelte-icons/fa/FaEnvelope.svelte';
 
-	const bg = colorModeValue('gray.50', 'gray.900');
-	const color = colorModeValue('gray.700', 'gray.200');
+	import { bg, color } from '../../stores';
+	import ActionButton from '../components/ActionButton.svelte';
 </script>
 
 <Box bg={$bg} color={$color}>
 	<Stack
 		py={4}
-		orientation="horizontal"
 		spacing={4}
-		justifyContent={{ base: 'center', md: 'space-between' }}
-		alignItems={{ base: 'center', md: 'center' }}
+		flexDirection="column"
+		justifyContent="center"
+		alignItems="center"
+		fontSize="sm"
 	>
-		<Text>© 2022 Chakra UI. All rights reserved</Text>
-		<Stack
-			orientation="horizontal"
-			spacing={6}
-			justifyContent={{ base: 'center', md: 'space-between' }}
-			sx={{ fontSize: 'sm' }}
-		>
-			<SocialButton label="Twitter" icon={FaTwitter} href="#" />
-			<SocialButton label="YouTube" icon={FaGithub} href="#" />
+		<Text>
+			Proudly developed by
+			<Link href="https://elcharitas.dev" target="_blank">Jonathan Irhodia</Link>
+		</Text>
+		<Stack>
+			<ActionButton label="Follow on Github" icon={FaGithub} href="https://github.com" />
+			<ActionButton label="Follow on Twitter" icon={FaTwitter} />
+			<ActionButton label="Connect on Linkedin" icon={FaLinkedin} />
+			<ActionButton
+				label="Send me an Email"
+				icon={FaEmail}
+				href="mailto:jonathanirhodia@gmail.com"
+			/>
 		</Stack>
 	</Stack>
 </Box>
