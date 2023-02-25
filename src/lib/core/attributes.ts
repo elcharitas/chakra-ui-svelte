@@ -7,24 +7,22 @@
  * In future versions of Svelte, we can use the `use:props` directive to forward all props to the underlying element.
  * The `props` attribute may also become deprecated.
  *
- * @param as The underlying element
  * @param props The props to forward
  */
-export const forwardAttributes = (as: string, props: Record<string, string>) => {
-	let attributes: string[] = ['title', 'viewBox', 'xmlns', 'd', 'fill', 'stroke'];
-	if (typeof as === 'string' && typeof document !== 'undefined') {
-		const element = document.createElement(as);
-		attributes = [...attributes, ...Object.keys(Object.getPrototypeOf(element))];
+export const attributes = (node: Element, props: Record<string, string>) => {
+	const selector = props.as;
+	let attrs: string[] = ['title', 'viewBox', 'xmlns', 'fill', 'stroke'];
+	if (typeof selector === 'string' && typeof document !== 'undefined') {
+		const element = document.createElement(selector);
+		attrs = [...attrs, ...Object.keys(Object.getPrototypeOf(element))];
 	}
-	return (node: Element) => {
-		attributes.forEach((attr) => {
-			if (props[attr] && typeof props[attr] !== 'function') {
-				node.setAttribute(attr, props[attr]);
-			}
-		});
-		return {
-			// eslint-disable-next-line @typescript-eslint/no-empty-function
-			destroy() {}
-		};
+	attrs.forEach((attr) => {
+		if (props[attr] && typeof props[attr] !== 'function') {
+			node.setAttribute(attr, props[attr]);
+		}
+	});
+	return {
+		// eslint-disable-next-line @typescript-eslint/no-empty-function
+		destroy() {}
 	};
 };
