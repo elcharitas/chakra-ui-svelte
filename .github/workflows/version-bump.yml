@@ -1,4 +1,4 @@
-name: Build Tag and Bump Version
+name: Build Tag and Version
 
 on:
   workflow_dispatch: # on button click
