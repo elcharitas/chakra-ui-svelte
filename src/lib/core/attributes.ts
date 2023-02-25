@@ -22,7 +22,8 @@ export const attributes = (node: Element, props: Record<string, string>) => {
 		}
 	});
 	return {
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
-		destroy() {}
+		update(newProps) {
+			props = newProps;
+		}
 	};
 };
