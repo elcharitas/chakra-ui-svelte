@@ -6,4 +6,4 @@
 	const events = eventsForward(current_component);
 </script>
 
-<Box as="input" apply="Input" {events} {...$$props} />
+<Box as="input" apply="Input" {events} {...$$props} noSlot />
