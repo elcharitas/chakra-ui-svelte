@@ -1,5 +1,6 @@
 {
 	"name": "chakra-ui-svelte",
+	"description": "Create accessible svelte apps with speed",
 	"version": "0.2.0",
 	"type": "module",
 	"main": "./index.js",
