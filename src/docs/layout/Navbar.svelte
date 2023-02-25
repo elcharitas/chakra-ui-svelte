@@ -49,10 +49,15 @@
 			<ActionButton
 				label="Star the Github Repo"
 				icon={FaGithub}
-				href="https://github.com"
+				href="https://github.com/elcharitas/chakra-ui-svelte"
 				display={{ base: 'none', md: 'inline' }}
 			/>
-			<ActionButton label="Twitter" icon={FaTwitter} display={{ base: 'none', md: 'inline' }} />
+			<ActionButton
+				label="Twitter"
+				icon={FaTwitter}
+				href="https://twitter.com/chakraui_svelte"
+				display={{ base: 'none', md: 'inline' }}
+			/>
 			{#if $colorMode === 'dark'}
 				<ActionButton
 					icon={FaSun}

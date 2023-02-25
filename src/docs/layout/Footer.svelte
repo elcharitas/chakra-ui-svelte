@@ -23,9 +23,17 @@
 			<Link href="https://elcharitas.dev" target="_blank">Jonathan Irhodia</Link>
 		</Text>
 		<Stack>
-			<ActionButton label="Follow on Github" icon={FaGithub} href="https://github.com" />
-			<ActionButton label="Follow on Twitter" icon={FaTwitter} />
-			<ActionButton label="Connect on Linkedin" icon={FaLinkedin} />
+			<ActionButton icon={FaGithub} label="Follow on Github" href="https://github.com/elcharitas" />
+			<ActionButton
+				icon={FaTwitter}
+				label="Follow on Twitter"
+				href="https://twitter.com/iamelcharitas"
+			/>
+			<ActionButton
+				icon={FaLinkedin}
+				label="Connect on Linkedin"
+				href="https://linkedin.com/in/elcharitas"
+			/>
 			<ActionButton
 				label="Send me an Email"
 				icon={FaEmail}
