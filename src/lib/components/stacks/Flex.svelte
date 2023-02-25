@@ -1,9 +1,8 @@
 <script>
 	import Box from '$lib/components/basic/Box.svelte';
-	import { current_component } from 'svelte/internal';
 	import { forwardEvents } from '$lib/core';
 
-	const events = forwardEvents(current_component);
+	const events = forwardEvents();
 
 	export const direction = 'row';
 </script>

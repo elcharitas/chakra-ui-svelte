@@ -1,5 +1,4 @@
 <script>
-	import { current_component } from 'svelte/internal';
 	import { Button, Icon, Link, VisuallyHidden } from '$lib/components';
 	import { forwardEvents } from '$lib/core';
 
@@ -11,7 +10,7 @@
 	export let target = '_blank';
 	export let rel = 'button';
 	const SocialIcon = icon || 'span';
-	const events = forwardEvents(current_component);
+	const events = forwardEvents();
 </script>
 
 <Link {href} {target} {rel}>

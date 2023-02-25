@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { current_component } from 'svelte/internal';
 	import { forwardEvents } from '$lib/core';
 	import Stack from '../stacks/Stack.svelte';
 
-	const events = forwardEvents(current_component);
+	const events = forwardEvents();
 </script>
 
 <Stack {events} {...$$props}>
