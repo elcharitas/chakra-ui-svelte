@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { current_component } from 'svelte/internal';
 	import { forwardEvents, createStyle, chakra, attributes } from '$lib/core';
 
-	export let events = forwardEvents(current_component);
+	export let events = forwardEvents();
 	export let as: any = 'div';
 	export const apply: string = 'Box';
 	export let wrap: boolean | string = false;

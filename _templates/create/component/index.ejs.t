@@ -2,11 +2,11 @@
 to: src/lib/components/<%= name %>.svelte
 ---
 <script lang="ts">
-    import { onMount, onDestroy, current_component } from 'svelte/internal';
+    import { onMount, onDestroy } from 'svelte/internal';
 	import { forwardEvents } from '$lib/core';
 	import Box from '$lib/components/basic/Box.svelte';
 
-	const events = forwardEvents(current_component);
+	const events = forwardEvents();
 
     const props = {
 
