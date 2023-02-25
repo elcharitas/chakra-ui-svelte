@@ -35,9 +35,6 @@ cd chakra-ui-svelte
 **`pnpm install`**: bootstraps the entire project, symlinks all dependencies for
 cross-component development and builds all components.
 
-**`pnpm story:dev`**: starts histoire server and loads stories in files that
-end with `.story.svelte`.
-
 **`pnpm test`**: run test for all component packages.
 
 ## Making a Pull Request?
