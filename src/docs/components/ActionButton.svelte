@@ -1,7 +1,7 @@
 <script>
 	import { current_component } from 'svelte/internal';
 	import { Button, Icon, Link, VisuallyHidden } from '$lib/components';
-	import { eventsForward } from '$lib/core';
+	import { forwardEvents } from '$lib/core';
 
 	import { hoverBg, color } from '../../stores';
 
@@ -11,7 +11,7 @@
 	export let target = '_blank';
 	export let rel = 'button';
 	const SocialIcon = icon || 'span';
-	const events = eventsForward(current_component);
+	const events = forwardEvents(current_component);
 </script>
 
 <Link {href} {target} {rel}>
