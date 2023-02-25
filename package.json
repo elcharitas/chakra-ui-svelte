@@ -62,7 +62,7 @@
 		"eslint-plugin-svelte3": "^3.2.1",
 		"histoire": "^0.12.4",
 		"html-webpack-plugin": "^5.5.0",
-		"husky": "^8.0.3",
+		"husky": "^8.0.0",
 		"hygen": "^6.2.0",
 		"jest": "^28.1.0",
 		"prettier": "^2.5.1",
