@@ -22,7 +22,8 @@
 		"format": "prettier --write .",
 		"story:dev": "svelte-kit sync && histoire dev",
 		"story:build": "histoire build",
-		"story:preview": "histoire preview"
+		"story:preview": "histoire preview",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@babel/core": "^7.17.9",
@@ -34,6 +35,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.7",
+		"@commitlint/cli": "^17.4.4",
+		"@commitlint/config-conventional": "^17.4.4",
 		"@histoire/plugin-svelte": "^0.12.4",
 		"@playwright/test": "^1.20.0",
 		"@storybook/addon-actions": "^6.5.12",
@@ -52,12 +55,14 @@
 		"@typescript-eslint/parser": "^5.10.1",
 		"autoprefixer": "^10.4.2",
 		"babel-loader": "^8.2.3",
+		"commitizen": "^4.3.0",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-storybook": "^0.6.4",
 		"eslint-plugin-svelte3": "^3.2.1",
 		"histoire": "^0.12.4",
 		"html-webpack-plugin": "^5.5.0",
+		"husky": "^8.0.3",
 		"hygen": "^6.2.0",
 		"jest": "^28.1.0",
 		"prettier": "^2.5.1",
