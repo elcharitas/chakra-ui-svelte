@@ -1,7 +1,7 @@
 import type { SvelteComponent } from 'svelte';
 import { bubble, listen } from 'svelte/internal';
 
-export function eventsForward(component: SvelteComponent, additionalEvents: string[] = []) {
+export function forwardEvents(component: SvelteComponent, additionalEvents: string[] = []) {
 	const events = [
 		'focus',
 		'blur',

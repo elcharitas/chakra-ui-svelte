@@ -9,7 +9,6 @@ import { filter } from '../utils/object';
  * This styles can then be converted into classes later on
  *
  * @param props
- * @returns
  */
 export function extractComponentStyles(props) {
 	let componentStyles = {
@@ -37,7 +36,6 @@ export function extractComponentStyles(props) {
  * Creates and return a class based on a components props
  *
  * @param props
- * @returns
  */
 export function createStyle(props) {
 	const themeVars = toCSSVar(theme);
@@ -50,7 +48,6 @@ export function createStyle(props) {
  * Creates and return a class based on a components props and it's applied style
  *
  * @param props
- * @returns
  */
 export function createClass(props, ...classList: string[]) {
 	const safeProps = filter(props, (value) => typeof value !== 'function');
@@ -67,7 +64,6 @@ export function createClass(props, ...classList: string[]) {
  *
  * @param node
  * @param props
- * @returns
  */
 export function chakra<T>(node: HTMLElement, props: T) {
 	function update(props) {
@@ -75,6 +71,7 @@ export function chakra<T>(node: HTMLElement, props: T) {
 		node.className = className;
 	}
 
+	// onMount, set initial class
 	update(props);
 
 	return { update };
