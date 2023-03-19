@@ -39,18 +39,18 @@ $ pnpm install chakra-ui-svelte svelte-icons
 
 To start using the components, please follow these steps:
 
-- Wrap your application with the `ThemeProvider`
+- Wrap your application with the `ChakraProvider`
 
 ```html
 // page.svelte
 <script>
-	import { ThemeProvider } from 'chakra-ui-svelte';
-	import App from './App.svelte';
+  import { ChakraProvider } from 'chakra-ui-svelte';
+  import App from './App.svelte';
 </script>
 
-<ThemeProvider>
-	<App />
-</ThemeProvider>
+<ChakraProvider>
+  <App />
+</ChakraProvider>
 ```
 
 - The provider is essential as it injects generated styles into your svelte app.
@@ -59,7 +59,7 @@ To start using the components, please follow these steps:
 
 The latest release has the following components
 
-- ThemeProvider - Which should wrap all other components
+- ChakraProvider - Which should wrap all other components
 - Box - The Basic component upon which every other component is built on
 - Icon
 - Logo
