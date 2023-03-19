@@ -5,6 +5,6 @@
 	const events = forwardEvents();
 </script>
 
-<Box {events} mx="auto" {...$$props}>
+<Box as="section" {events} mx="auto" {...$$props}>
 	<slot />
 </Box>
