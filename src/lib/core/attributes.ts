@@ -1,28 +1,32 @@
 /**
- * Ideally, we should be able to use the `props` attribute to forward all props to the underlying element.
- * However, this would be really troublesome to maintain as we would have to manually add all props to the `props` attribute.
- * Instead, we use the `as` attribute to determine the underlying element and forward all props to it.
+ * Sets the specified attributes on the given element.
  *
- * If the `as` attribute is a string, we use the `svelte:element` component to forward all props to the underlying element.
- * In future versions of Svelte, we can use the `use:props` directive to forward all props to the underlying element.
- * The `props` attribute may also become deprecated.
- *
- * @param props The props to forward
+ * @param node The node to set attributes on.
+ * @param props The props of a component containing attributes.
+ * @returns An object with an `update` function for updating the props.
  */
 export const attributes = (node: Element, props: Record<string, string>) => {
-	const selector = props.as;
-	let attrs: string[] = ['title', 'viewBox', 'xmlns', 'fill', 'stroke'];
-	if (typeof selector === 'string' && typeof document !== 'undefined') {
-		const element = document.createElement(selector);
-		attrs = [...attrs, ...Object.keys(Object.getPrototypeOf(element))];
+	// Define the list of attributes to set.
+	const validAttributes = ['id', 'title', 'viewBox', 'xmlns', 'fill', 'stroke'];
+
+	// If an `as` property is provided, add all prototype properties of the specified element.
+	if (props.as && typeof props.as === 'string' && typeof document !== 'undefined') {
+		const prototypeAttributes = Object.getOwnPropertyNames(
+			Object.getPrototypeOf(document.createElement(props.as))
+		);
+		validAttributes.push(...prototypeAttributes);
 	}
-	attrs.forEach((attr) => {
-		if (props[attr] && typeof props[attr] !== 'function') {
-			node.setAttribute(attr, props[attr]);
+
+	// Set the valid attributes on the element.
+	for (const attribute of validAttributes) {
+		if (attribute in props && typeof props[attribute] !== 'function' && props[attribute]) {
+			node.setAttribute(attribute, props[attribute]);
 		}
-	});
+	}
+
+	// Return an object with an `update` function for updating the attributes.
 	return {
-		update(newProps) {
+		update(newProps: Record<string, string>) {
 			props = newProps;
 		}
 	};
