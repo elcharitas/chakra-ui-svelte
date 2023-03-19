@@ -1,4 +1,5 @@
 <script>
+	import Footer from '$docs/layout/Footer.svelte';
 	import { Box, Text, Button, Link, Stack } from '$lib/components';
 </script>
 
@@ -44,4 +45,5 @@
 			<Link href="https://vue.chakra-ui.com" opacity={0.7} fontSize="sm">VueJs</Link>
 		</Stack>
 	</Box>
+	<Footer />
 </Box>
