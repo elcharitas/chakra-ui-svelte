@@ -12,8 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
-      - run: npm run package
+      - run: npm install -g pnpm
+      - run: pnpm i --no-optional
+      - run: pnpm package
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}

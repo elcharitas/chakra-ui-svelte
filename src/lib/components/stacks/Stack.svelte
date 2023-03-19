@@ -1,12 +1,11 @@
-<script>
+<script lang="ts">
 	import Flex from './Flex.svelte';
-	import { current_component } from 'svelte/internal';
-	import { eventsForward } from '$lib/core';
+	import { forwardEvents } from '$lib/core';
 
-	const events = eventsForward(current_component);
+	const events = forwardEvents();
 
 	export const spacing = 2;
-	export const orientation = null;
+	export const orientation: 'vertical' | 'horizontal' | undefined = undefined;
 </script>
 
 <Flex gap={spacing} direction={orientation === 'vertical' ? 'column' : 'row'} {events} {...$$props}>

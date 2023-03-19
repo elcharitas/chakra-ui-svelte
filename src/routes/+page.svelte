@@ -1,4 +1,5 @@
 <script>
+	import Footer from '$docs/layout/Footer.svelte';
 	import { Box, Text, Button, Link, Stack } from '$lib/components';
 </script>
 
@@ -32,7 +33,7 @@
 				</Button>
 			</Link>
 			<Link href={'https://github.com/elcharitas/chakra-ui-svelte'} target="_blank">
-				<Button h="4rem" px="60px" fontSize="1.2rem" size="lg" w={['full', , 'auto']}>
+				<Button h="4rem" px="60px" fontSize="1.2rem" size="lg" w={['full', '', 'auto']}>
 					Github
 				</Button>
 			</Link>
@@ -44,4 +45,5 @@
 			<Link href="https://vue.chakra-ui.com" opacity={0.7} fontSize="sm">VueJs</Link>
 		</Stack>
 	</Box>
+	<Footer />
 </Box>

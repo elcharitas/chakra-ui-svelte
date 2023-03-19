@@ -41,24 +41,24 @@ const sizes = {
 	}
 };
 
-function getDefaults(props: Record<string, any>) {
-	const { focusBorderColor: fc, errorBorderColor: ec } = props;
+function getDefaults(properties: Record<string, string>) {
+	const { focusBorderColor: fc, errorBorderColor: ec } = properties;
 	return {
-		focusBorderColor: fc || mode('blue.500', 'blue.300')(props),
-		errorBorderColor: ec || mode('red.500', 'red.300')(props)
+		focusBorderColor: fc || mode('blue.500', 'blue.300')(properties),
+		errorBorderColor: ec || mode('red.500', 'red.300')(properties)
 	};
 }
 
-const variantOutline = (props) => {
-	const { theme } = props;
-	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+const variantOutline = (properties) => {
+	const { theme } = properties;
+	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(properties);
 
 	return {
 		border: '1px solid',
-		borderColor: mode('whiteAlpha.50', 'gray.200')(props),
+		borderColor: mode('whiteAlpha.50', 'gray.200')(properties),
 		bg: 'inherit',
 		_hover: {
-			borderColor: mode('gray.300', 'whiteAlpha.400')(props)
+			borderColor: mode('gray.300', 'whiteAlpha.400')(properties)
 		},
 		_readOnly: {
 			boxShadow: 'none !important',
@@ -76,16 +76,16 @@ const variantOutline = (props) => {
 	};
 };
 
-const variantFilled = (props) => {
-	const { theme } = props;
-	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+const variantFilled = (properties) => {
+	const { theme } = properties;
+	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(properties);
 
 	return {
 		border: '2px solid',
 		borderColor: 'transparent',
-		bg: mode('gray.100', 'whiteAlpha.50')(props),
+		bg: mode('gray.100', 'whiteAlpha.50')(properties),
 		_hover: {
-			bg: mode('gray.200', 'whiteAlpha.100')(props)
+			bg: mode('gray.200', 'whiteAlpha.100')(properties)
 		},
 		_readOnly: {
 			boxShadow: 'none !important',
@@ -101,9 +101,9 @@ const variantFilled = (props) => {
 	};
 };
 
-const variantFlushed = (props) => {
-	const { theme } = props;
-	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+const variantFlushed = (properties) => {
+	const { theme } = properties;
+	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(properties);
 
 	return {
 		borderBottom: '1px solid',

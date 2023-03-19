@@ -1,9 +1,8 @@
 <script>
 	import Box from './Box.svelte';
-	import { current_component } from 'svelte/internal';
-	import { eventsForward } from '$lib/core';
+	import { forwardEvents } from '$lib/core';
 
-	const events = eventsForward(current_component);
+	const events = forwardEvents();
 	export let href = '#';
 </script>
 

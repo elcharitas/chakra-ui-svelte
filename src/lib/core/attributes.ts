@@ -1,30 +1,33 @@
 /**
- * Ideally, we should be able to use the `props` attribute to forward all props to the underlying element.
- * However, this would be really troublesome to maintain as we would have to manually add all props to the `props` attribute.
- * Instead, we use the `as` attribute to determine the underlying element and forward all props to it.
+ * Sets the specified attributes on the given element.
  *
- * If the `as` attribute is a string, we use the `svelte:element` component to forward all props to the underlying element.
- * In future versions of Svelte, we can use the `use:props` directive to forward all props to the underlying element.
- * The `props` attribute may also become deprecated.
- *
- * @param as The underlying element
- * @param props The props to forward
+ * @param node The node to set attributes on.
+ * @param props The props of a component containing attributes.
+ * @returns An object with an `update` function for updating the props.
  */
-export const forwardAttributes = (as: string, props: Record<string, string>) => {
-	let attributes: string[] = ['title', 'viewBox', 'xmlns', 'd', 'fill', 'stroke'];
-	if (typeof as === 'string' && typeof document !== 'undefined') {
-		const element = document.createElement(as);
-		attributes = [...attributes, ...Object.keys(Object.getPrototypeOf(element))];
+export const attributes = (node: Element, props: Record<string, string>) => {
+	// Define the list of attributes to set.
+	const validAttributes = ['id', 'title', 'viewBox', 'xmlns', 'fill', 'stroke'];
+
+	// If an `as` property is provided, add all prototype properties of the specified element.
+	if (props.as && typeof props.as === 'string' && typeof document !== 'undefined') {
+		const prototypeAttributes = Object.getOwnPropertyNames(
+			Object.getPrototypeOf(document.createElement(props.as))
+		);
+		validAttributes.push(...prototypeAttributes);
 	}
-	return (node: Element) => {
-		attributes.forEach((attr) => {
-			if (props[attr] && typeof props[attr] !== 'function') {
-				node.setAttribute(attr, props[attr]);
-			}
-		});
-		return {
-			// eslint-disable-next-line @typescript-eslint/no-empty-function
-			destroy() {}
-		};
+
+	// Set the valid attributes on the element.
+	for (const attribute of validAttributes) {
+		if (attribute in props && typeof props[attribute] !== 'function' && props[attribute]) {
+			node.setAttribute(attribute, props[attribute]);
+		}
+	}
+
+	// Return an object with an `update` function for updating the attributes.
+	return {
+		update(newProps: Record<string, string>) {
+			props = newProps;
+		}
 	};
 };

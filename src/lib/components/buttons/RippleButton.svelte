@@ -1,13 +1,12 @@
 <script>
 	import { afterUpdate } from 'svelte';
-	import { current_component } from 'svelte/internal';
-	import { eventsForward } from '$lib/core';
+	import { forwardEvents } from '$lib/core';
 	import Box from '../basic/Box.svelte';
 	import Button from './Button.svelte';
 
 	export let isRippling = false;
 
-	const events = eventsForward(current_component);
+	const events = forwardEvents();
 
 	let x = -1,
 		y = -1;

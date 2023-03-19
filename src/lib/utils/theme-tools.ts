@@ -1,5 +1,5 @@
 import type { Theme } from '$lib/theme';
-type Dict = Record<string, any>;
+type Dict = Record<string, unknown>;
 
 /**
  * Returns the value based on current theme color mode.
@@ -8,8 +8,8 @@ type Dict = Record<string, any>;
  * @param dark
  * @returns
  */
-export const mode = <T extends unknown>(light: T, dark: T): ((props) => T) => (props) =>
-	props.colormode == 'dark' ? dark : light;
+export const mode = <T>(light: T, dark: T): ((properties) => T) => (properties) =>
+	properties.colormode == 'dark' ? dark : light;
 
 export const getColor = (theme: Dict, color: string, fallback?: string) => {
 	return theme?.colors[color] || fallback;
@@ -26,7 +26,7 @@ export const transparentize = (color: string, opacity: number) => (theme: Theme)
 	return (
 		theme?.colors[color]
 			?.replace(/^#/, '')
-			.replace(/([0-9a-f]{2})/g, '$1 ')
+			.replace(/([\da-f]{2})/g, '$1 ')
 			.trim() +
 		' ' +
 		opacity

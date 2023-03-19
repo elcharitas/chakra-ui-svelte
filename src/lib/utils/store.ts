@@ -11,7 +11,9 @@ export type StoreCallback<T> = () => T;
  */
 export function createStore<T>(
 	initialValue: StoreCallback<T>,
-	subscription: (value: T) => void = () => null
+	subscription: (value: T) => void = () => {
+		// do nothing
+	}
 ) {
 	const initial = initialValue();
 	const store = writable(initial);

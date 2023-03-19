@@ -1,8 +1,10 @@
 {
 	"name": "chakra-ui-svelte",
+	"description": "Create accessible svelte apps with speed",
 	"version": "0.2.2",
 	"type": "module",
 	"main": "./index.js",
+	"types": "./index.d.ts",
 	"homepage": "https://github.com/elcharitas/chakra-ui-svelte",
 	"repository": {
 		"type": "git",
@@ -17,22 +19,24 @@
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
+		"lint": "eslint . --ext .svelte,.ts",
 		"format": "prettier --write .",
 		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@babel/core": "^7.17.9",
-		"@chakra-ui/styled-system": "^2.3.1",
-		"@emotion/css": "^11.10.0"
+		"@chakra-ui/styled-system": "^2.3.1"
 	},
 	"peerDependencies": {
-		"svelte": "^3.50.0"
+		"@emotion/css": "^11.10.5",
+		"svelte": "^3.50.0",
+		"vite-plugin-css-injected-by-js": "^3.1.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.7",
 		"@commitlint/cli": "^17.4.4",
 		"@commitlint/config-conventional": "^17.4.4",
+		"@emotion/css": "^11.10.5",
 		"@playwright/test": "^1.20.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "^1.8.0",
@@ -44,9 +48,10 @@
 		"autoprefixer": "^10.4.2",
 		"babel-loader": "^8.2.3",
 		"commitizen": "^4.3.0",
-		"eslint": "^7.32.0",
+		"eslint": "^8.35.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.1",
+		"eslint-plugin-unicorn": "^46.0.0",
 		"html-webpack-plugin": "^5.5.0",
 		"husky": "^8.0.0",
 		"hygen": "^6.2.0",
@@ -62,9 +67,14 @@
 		"ts-jest": "^29.0.3",
 		"tslib": "^2.4.1",
 		"typescript": "^4.7.4",
-		"vite": "^4.0.3"
+		"vite": "^4.0.3",
+		"vite-plugin-css-injected-by-js": "^3.1.0"
 	},
 	"optionalDependencies": {
-		"svelte-icons": "^2.1.0"
+		"highlight.js": "^11.7.0",
+		"lunr": "^2.3.9",
+		"markdown-it-highlightjs": "^4.0.1",
+		"svelte-icons": "^2.1.0",
+		"vite-plugin-svelte-md": "^0.1.7"
 	}
 }

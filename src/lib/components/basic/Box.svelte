@@ -1,25 +1,22 @@
 <script lang="ts">
-	import { current_component } from 'svelte/internal';
-	import { eventsForward, createStyle, chakra, forwardAttributes } from '$lib/core';
+	import { forwardEvents, createStyle, chakra, attributes } from '$lib/core';
 
-	export let events = eventsForward(current_component);
-	export let as: any = 'div';
-	export const apply: string = 'Box';
+	export let events = forwardEvents();
+	export let as: keyof HTMLElementTagNameMap | ConstructorOfATypedSvelteComponent = 'div';
+	export const apply = 'Box';
 	export let wrap: boolean | string = false;
 	export let props = {};
 	export let sx = {};
 	export let noSlot = false;
 
 	const styles = createStyle({ sx, ...props });
-	// this provides a fine grained control over the component's props
-	const attributes = forwardAttributes(as, $$props);
 </script>
 
 {#if typeof as === 'string'}
 	{#if noSlot}
-		<svelte:element this={as} use:chakra={$$props} use:events use:attributes />
+		<svelte:element this={as} use:chakra={$$props} use:attributes={$$props} use:events />
 	{:else}
-		<svelte:element this={as} use:chakra={$$props} use:events use:attributes>
+		<svelte:element this={as} use:chakra={$$props} use:attributes={$$props} use:events>
 			<slot />
 		</svelte:element>
 	{/if}
@@ -28,8 +25,8 @@
 		<svelte:element
 			this={wrap !== true ? wrap : 'div'}
 			use:chakra={$$props}
+			use:attributes={$$props}
 			use:events
-			use:attributes
 		>
 			<svelte:component this={as}>
 				<slot />
