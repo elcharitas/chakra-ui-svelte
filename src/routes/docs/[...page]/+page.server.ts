@@ -1,9 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { existsSync } from 'node:fs';
 
-export const prerender = true;
-
-export async function load({ params }) {
+export async function load({ params }: { params: Record<string, string> }) {
 	if (existsSync(`src/routes/docs/pages/${params.page}.md`)) {
 		return {
 			slug: params.page
