@@ -21,18 +21,18 @@ Chakra UI provides a set of accessible, reusable, and composable Svelte componen
 
 ## Installation
 
-To use Chakra UI components, all you need to do is install the `chakra-ui-svelte` package and (optionally) its peer dependencies:
+To use Chakra UI components, all you need to do is install the `chakra-ui-svelte` package and its peer dependencies:
 
 ```sh
-$ yarn add chakra-ui-svelte svelte-icons
+$ yarn add chakra-ui-svelte @emotion/css
 
 # or
 
-$ npm i chakra-ui-svelte svelte-icons
+$ npm i chakra-ui-svelte @emotion/css
 
 # or
 
-$ pnpm install chakra-ui-svelte svelte-icons
+$ pnpm install chakra-ui-svelte @emotion/css
 ```
 
 ## Usage
@@ -44,12 +44,12 @@ To start using the components, please follow these steps:
 ```html
 // page.svelte
 <script>
-  import { ChakraProvider } from 'chakra-ui-svelte';
-  import App from './App.svelte';
+	import { ChakraProvider } from 'chakra-ui-svelte';
+	import App from './App.svelte';
 </script>
 
 <ChakraProvider>
-  <App />
+	<App />
 </ChakraProvider>
 ```
 
