@@ -70,7 +70,7 @@ export function forwardEvents(additionalEvents: string[] = []) {
 	return (node: EventTarget) => {
 		const destructors = [];
 
-		events.forEach((event) => {
+		for (const event of events) {
 			if (node.addEventListener) {
 				destructors.push(
 					listen(node, event, forward, {
@@ -78,11 +78,11 @@ export function forwardEvents(additionalEvents: string[] = []) {
 					})
 				);
 			}
-		});
+		}
 
 		return {
 			destroy: () => {
-				destructors.forEach((d) => d());
+				for (const d of destructors) d();
 			}
 		};
 	};

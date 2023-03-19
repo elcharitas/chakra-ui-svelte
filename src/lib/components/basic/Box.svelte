@@ -2,8 +2,8 @@
 	import { forwardEvents, createStyle, chakra, attributes } from '$lib/core';
 
 	export let events = forwardEvents();
-	export let as: any = 'div';
-	export const apply: string = 'Box';
+	export let as: keyof HTMLElementTagNameMap | ConstructorOfATypedSvelteComponent = 'div';
+	export const apply = 'Box';
 	export let wrap: boolean | string = false;
 	export let props = {};
 	export let sx = {};

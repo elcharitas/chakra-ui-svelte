@@ -36,10 +36,10 @@ export const isDarkMode = derived(colorMode, (colorMode) => colorMode === 'dark'
  * @param dark
  * @returns
  */
-export const colorModeValue = <T extends unknown>(light: T, dark: T) => {
+export const colorModeValue = <T>(light: T, dark: T) => {
 	const store = createStore(() => light);
-	colorMode.subscribe((val) => {
-		store.set(val === 'light' ? light : dark);
+	colorMode.subscribe((value) => {
+		store.set(value === 'light' ? light : dark);
 	});
 	return store;
 };

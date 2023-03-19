@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { existsSync } from 'fs';
+import { existsSync } from 'node:fs';
 
 export const prerender = true;
 

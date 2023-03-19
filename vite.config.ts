@@ -1,6 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import svelteMd from 'vite-plugin-svelte-md';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import type { UserConfig } from 'vite';
 import mdHighlight from 'markdown-it-highlightjs';
 
