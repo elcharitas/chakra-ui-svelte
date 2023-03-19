@@ -51,6 +51,14 @@ const knownEvents = [
 	'lostpointercapture'
 ];
 
+/**
+ * Components in svelte are not event emitters, so we need to manually
+ * forward events from the component to the underlying DOM element.
+ * This is a builder. It builds a svelte action used to forward
+ * events from the component to the underlying DOM element.
+ *
+ * @param additionalEvents The additional set of events to listen for
+ */
 export function forwardEvents(additionalEvents: string[] = []) {
 	const component: SvelteComponent = get_current_component();
 	const events = [...knownEvents, ...additionalEvents];
@@ -64,7 +72,11 @@ export function forwardEvents(additionalEvents: string[] = []) {
 
 		events.forEach((event) => {
 			if (node.addEventListener) {
-				destructors.push(listen(node, event, forward));
+				destructors.push(
+					listen(node, event, forward, {
+						passive: false
+					})
+				);
 			}
 		});
 
