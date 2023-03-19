@@ -1,9 +1,11 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import svelteMd from 'vite-plugin-svelte-md';
 import { resolve } from 'path';
 import type { UserConfig } from 'vite';
+import mdHighlight from 'markdown-it-highlightjs';
 
 const config: UserConfig = {
-	plugins: [sveltekit()],
+	plugins: [svelteMd({ markdownItUses: [mdHighlight] }), sveltekit()],
 	resolve: {
 		alias: {
 			$lib: resolve('./src/lib'),
