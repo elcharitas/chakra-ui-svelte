@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { ThemeProvider, Box, Container } from '$lib/components';
+	import { ChakraProvider, Box, Container } from '$lib/components';
 	import Navbar from '$docs/layout/Navbar.svelte';
 	import { bg, color } from '$docs/stores';
 	import 'highlightjs/styles/atom-one-dark.css';
 </script>
 
-<ThemeProvider>
+<ChakraProvider>
 	<Box
 		bg={$bg}
 		color={$color}
@@ -26,4 +26,4 @@
 			<slot />
 		</Container>
 	</Box>
-</ThemeProvider>
+</ChakraProvider>

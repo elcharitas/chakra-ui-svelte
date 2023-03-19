@@ -1,3 +1,7 @@
+---
+title: Installation
+---
+
 # Installation
 
 To use Chakra UI in your project, run one of the following commands in your terminal:
