@@ -1,5 +1,5 @@
 [tool.commitizen]
-version = "0.2.0"
+version = "0.2.2"
 version_files = [
   "package.json:version"
 ]
