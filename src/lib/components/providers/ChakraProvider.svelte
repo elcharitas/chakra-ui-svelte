@@ -1,19 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { theme as baseTheme, themeStore } from '$lib/theme';
+	import type { theme as baseTheme } from '$lib/theme';
 	import GlobalStyles from './GlobalStyles.svelte';
 
-	export let theme = baseTheme;
+	export let theme: typeof baseTheme = undefined;
 	export let styles = {};
 
 	let isComponentMounted = false;
-	themeStore.set({ ...baseTheme, ...theme });
 
 	onMount(() => {
 		isComponentMounted = true;
 	});
 </script>
 
-<GlobalStyles {styles} />
+<GlobalStyles {styles} {theme} />
 
 <div style={!isComponentMounted ? 'display: none' : undefined}><slot /></div>

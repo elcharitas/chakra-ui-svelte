@@ -2,16 +2,11 @@ import type { SvelteComponentTyped } from 'svelte';
 import { ChakraComponentProps, PropVariant } from './types';
 
 /**
- * ThemeProvider is the root component that provides theming to all other Chakra components.
- */
-export class ThemeProvider extends SvelteComponentTyped<{ theme: object }> {}
-/**
  * ChakraProvider is the root component that provides context to all other Chakra components.
  * It is the equivalent of `ChakraProvider` in `@chakra-ui/react`.
  * It is required for all Chakra components to work.
- * @deprecated
  */
-export class ChakraProvider extends ThemeProvider {}
+export class ChakraProvider extends SvelteComponentTyped<{ theme: object }> {}
 
 /**
  * Box is a generic component that can be used to render any HTML element.
