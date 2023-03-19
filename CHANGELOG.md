@@ -1,3 +1,10 @@
+## 0.2.3 (2023-03-19)
+
+### Fix
+
+- remove redundant component drilling (#48)
+- Improve events, attributes actions (#47)
+
 ## 0.2.2 (2023-02-25)
 
 ### Fix
