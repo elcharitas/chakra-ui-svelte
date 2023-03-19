@@ -3,7 +3,7 @@
 	import type { theme as baseTheme } from '$lib/theme';
 	import GlobalStyles from './GlobalStyles.svelte';
 
-	export let theme: typeof baseTheme = undefined;
+	export let theme: typeof baseTheme;
 	export let styles = {};
 
 	let isComponentMounted = false;
@@ -15,4 +15,4 @@
 
 <GlobalStyles {styles} {theme} />
 
-<div style={!isComponentMounted ? 'display: none' : undefined}><slot /></div>
+<div style={isComponentMounted ? undefined : 'display: none'}><slot /></div>

@@ -33,7 +33,7 @@
 				</Button>
 			</Link>
 			<Link href={'https://github.com/elcharitas/chakra-ui-svelte'} target="_blank">
-				<Button h="4rem" px="60px" fontSize="1.2rem" size="lg" w={['full', , 'auto']}>
+				<Button h="4rem" px="60px" fontSize="1.2rem" size="lg" w={['full', '', 'auto']}>
 					Github
 				</Button>
 			</Link>
