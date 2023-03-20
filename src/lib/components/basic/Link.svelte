@@ -6,6 +6,6 @@
 	export let href = '#';
 </script>
 
-<Box as="a" apply="Link" props={{ href }} {events} {...$$props}>
+<Box as="a" apply="Link" props={{ href }} {events} {...$$restProps}>
 	<slot />
 </Box>

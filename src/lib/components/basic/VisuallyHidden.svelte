@@ -1,5 +1,5 @@
 <script>
-	import Box from './Box.svelte';
+	import Text from './Text.svelte';
 	const visuallyHiddenStyle = {
 		border: '0px',
 		clip: 'rect(0px, 0px, 0px, 0px)',
@@ -13,6 +13,6 @@
 	};
 </script>
 
-<Box as="span" {...visuallyHiddenStyle} {...$$props}>
+<Text sx={visuallyHiddenStyle} {...$$props}>
 	<slot />
-</Box>
+</Text>

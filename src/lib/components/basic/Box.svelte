@@ -14,9 +14,9 @@
 
 {#if typeof as === 'string'}
 	{#if noSlot}
-		<svelte:element this={as} use:chakra={$$props} use:attributes={$$props} use:events />
+		<svelte:element this={as} use:chakra={$$props} use:attributes={$$restProps} use:events />
 	{:else}
-		<svelte:element this={as} use:chakra={$$props} use:attributes={$$props} use:events>
+		<svelte:element this={as} use:chakra={$$props} use:attributes={$$restProps} use:events>
 			<slot />
 		</svelte:element>
 	{/if}
@@ -25,7 +25,7 @@
 		<svelte:element
 			this={wrap !== true ? wrap : 'div'}
 			use:chakra={$$props}
-			use:attributes={$$props}
+			use:attributes={$$restProps}
 			use:events
 		>
 			<svelte:component this={as}>
@@ -38,7 +38,7 @@
             However, we'd like to add support for them.
             For now, we'll just pass the props to the component.
         -->
-		<svelte:component this={as} class={styles} {...$$props}>
+		<svelte:component this={as} class={styles} {...$$restProps}>
 			<slot />
 		</svelte:component>
 	{/if}
