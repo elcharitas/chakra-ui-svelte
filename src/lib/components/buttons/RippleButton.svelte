@@ -35,7 +35,7 @@
 		y = e.clientY - rect.top;
 	}}
 	{events}
-	{...$$props}
+	{...$$restProps}
 >
 	{#if isRippling}
 		<Box

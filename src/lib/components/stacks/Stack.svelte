@@ -8,6 +8,12 @@
 	export const orientation: 'vertical' | 'horizontal' | undefined = undefined;
 </script>
 
-<Flex gap={spacing} direction={orientation === 'vertical' ? 'column' : 'row'} {events} {...$$props}>
+<Flex
+	gap={spacing}
+	direction={orientation === 'vertical' ? 'column' : 'row'}
+	justifyContent="center"
+	{events}
+	{...$$restProps}
+>
 	<slot />
 </Flex>

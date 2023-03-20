@@ -6,6 +6,6 @@
 	export let as = 'svg';
 </script>
 
-<Box {as} {events} apply="Icon" size="sm" {...$$props}>
+<Box {as} {events} apply="Icon" size="sm" {...$$restProps}>
 	<slot />
 </Box>

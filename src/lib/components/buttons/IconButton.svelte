@@ -8,6 +8,6 @@
 	const events = forwardEvents();
 </script>
 
-<Button {events} {...$$props}>
+<Button {events} {...$$restProps}>
 	<Icon as={icon} {wrap} />
 </Button>
