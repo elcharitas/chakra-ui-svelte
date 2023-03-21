@@ -4,7 +4,6 @@
 	"version": "0.2.2",
 	"type": "module",
 	"main": "./index.js",
-	"types": "./index.d.ts",
 	"homepage": "https://github.com/elcharitas/chakra-ui-svelte",
 	"repository": {
 		"type": "git",
