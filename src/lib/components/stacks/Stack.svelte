@@ -1,7 +1,12 @@
 <script lang="ts">
-	import Flex from './Flex.svelte';
 	import { forwardEvents } from '$lib/core';
+	import type { ChakraComponentProps } from '$lib/types';
+	import Flex from './Flex.svelte';
 
+	type $$Props = ChakraComponentProps & {
+		spacing?: $$Props['gap'];
+		orientation?: 'vertical' | 'horizontal';
+	};
 	const events = forwardEvents();
 
 	export const spacing = 2;

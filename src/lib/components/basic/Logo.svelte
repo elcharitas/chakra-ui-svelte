@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import { colorModeValue } from '$lib/stores';
+	import type { ChakraComponentProps } from '$lib/types';
 	import Box from './Box.svelte';
 
+	type $$Props = ChakraComponentProps;
 	const color = colorModeValue('#2D3748', '#e5e5e5');
 </script>
 

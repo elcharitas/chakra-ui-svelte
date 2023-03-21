@@ -1,7 +1,11 @@
-<script>
+<script lang="ts">
+	import type { ChakraComponentProps } from '$lib/types';
+
+	type $$Props = ChakraComponentProps & {
+		size?: $$Props['inlineSize'];
+	};
 	import Icon from '../basic/Icon.svelte';
-	import Box from '../basic/Box.svelte';
-	export let size;
+	export let size: $$Props['size'] = 24;
 </script>
 
 <Icon
@@ -15,7 +19,7 @@
 	strokeLinecap="round"
 	strokeLinejoin="round"
 >
-	<Box as="circle" animation="loader 1.5s ease-in-out infinite" cx="12" cy="12" r="10" />
+	<Icon as="circle" animation="loader 1.5s ease-in-out infinite" cx="12" cy="12" r="10" />
 </Icon>
 
 <style>
