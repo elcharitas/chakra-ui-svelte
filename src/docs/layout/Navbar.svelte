@@ -21,8 +21,17 @@
 		alignItems="center"
 		justifyContent="space-around"
 	>
-		<Stack direction="row" spacing={6}>
-			<Link href="/"><Logo /></Link>
+		<Stack spacing={6}>
+			<Link href="/">
+				<Logo />
+			</Link>
+			<Link href="https://github.com/elcharitas/chakra-ui-svelte">
+				<img
+					alt="GitHub Repo stars"
+					src="https://img.shields.io/github/stars/elcharitas/chakra-ui-svelte?style=social"
+					style="height: 1.2rem;"
+				/>
+			</Link>
 		</Stack>
 
 		<Flex justify="center" justifyContent="center" display={{ base: 'none', md: 'flex' }} />
