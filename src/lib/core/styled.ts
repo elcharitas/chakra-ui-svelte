@@ -1,7 +1,8 @@
-import { css, toCSSVar } from '@chakra-ui/styled-system';
+import { css, toCSSVar, type StyleProps } from '@chakra-ui/styled-system';
 import { theme } from '$lib/theme';
 import { system, cx } from './emotion';
 import { filter } from '../utils/object';
+import type { ChakraAction, ChakraComponentProps } from '$lib/types';
 
 /**
  * A Chakra UI Svelte component can be created to inherit styles using the `apply` prop.
@@ -37,7 +38,7 @@ export function extractComponentStyles(props) {
  *
  * @param props
  */
-export function createStyle(props) {
+export function createStyle<T extends ChakraComponentProps>(props: T) {
 	const themeVars = toCSSVar(theme);
 	const componentCSS = css(props)(themeVars);
 	const sxCss = css(props.sx)(themeVars);
@@ -49,8 +50,11 @@ export function createStyle(props) {
  *
  * @param props
  */
-export function createClass(props, ...classList: string[]) {
-	const safeProps = filter(props, (value) => typeof value !== 'function');
+export function createClass<T extends ChakraComponentProps>(props: T, ...classList: string[]) {
+	const safeProps = filter<T>(
+		props,
+		(value, key) => typeof value !== 'function' || key in ['as', 'wrap']
+	);
 	const themeVars = toCSSVar(theme);
 	const componentStyles = extractComponentStyles(props);
 	const baseCSS = css(safeProps)(themeVars);
@@ -65,11 +69,11 @@ export function createClass(props, ...classList: string[]) {
  * @param node
  * @param props
  */
-export function chakra<T>(node: HTMLElement, props: T) {
-	function update(props) {
-		const className = createClass(props, props.class);
+export const chakra: ChakraAction = (node, props) => {
+	const update = (newProps: typeof props) => {
+		const className = createClass(newProps, newProps.class);
 		node.className = className;
-	}
+	};
 
 	// onMount, set initial class
 	update(props);

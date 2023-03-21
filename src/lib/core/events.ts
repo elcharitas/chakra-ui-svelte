@@ -1,3 +1,4 @@
+import type { ChakraActionNoProps } from '$lib/types';
 import type { SvelteComponent } from 'svelte';
 import { bubble, get_current_component, listen } from 'svelte/internal';
 
@@ -59,7 +60,7 @@ const knownEvents = [
  *
  * @param additionalEvents The additional set of events to listen for
  */
-export function forwardEvents(additionalEvents: string[] = []) {
+export function forwardEvents(additionalEvents: string[] = []): ChakraActionNoProps {
 	const component: SvelteComponent = get_current_component();
 	const events = [...knownEvents, ...additionalEvents];
 
@@ -67,8 +68,8 @@ export function forwardEvents(additionalEvents: string[] = []) {
 		bubble(component, e);
 	}
 
-	return (node: EventTarget) => {
-		const destructors = [];
+	return (node) => {
+		const destructors: (() => void)[] = [];
 
 		for (const event of events) {
 			if (node.addEventListener) {
