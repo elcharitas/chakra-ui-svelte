@@ -37,24 +37,6 @@
 		<Flex justify="center" justifyContent="center" display={{ base: 'none', md: 'flex' }} />
 
 		<Flex justify="right" justifyContent="end">
-			<Input
-				placeholder="Search the docs."
-				sx={{
-					bg: $inputBg,
-					color: $color,
-					width: '300px',
-					fontWeight: 400,
-					fontSize: 'sm',
-					_hover: {
-						bg: $inputBg
-					},
-					_placeholder: {
-						color: 'gray.400'
-					}
-				}}
-				mr="8"
-				display={{ base: 'none', md: 'inline' }}
-			/>
 			<ButtonGroup alignItems="center" justifyContent="space-between">
 				<ActionButton
 					label="Star the Github Repo"
