@@ -1,6 +1,6 @@
 <script>
-	import Footer from '$docs/layout/Footer.svelte';
-	import { color, inputBg } from '$docs/stores';
+	import Footer from '../../layout/Footer.svelte';
+	import { color, inputBg } from '../../stores';
 	import { Box, Input, Flex } from '$lib/components';
 </script>
 

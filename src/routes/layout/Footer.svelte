@@ -5,7 +5,7 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaEmail from 'svelte-icons/fa/FaEnvelope.svelte';
 
-	import ActionButton from '../components/ActionButton.svelte';
+	import ActionButton from '../../routes/components/ActionButton.svelte';
 </script>
 
 <Stack

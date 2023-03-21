@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ChakraProvider, Box, Container } from '$lib/components';
-	import Navbar from '$docs/layout/Navbar.svelte';
-	import { bg, color } from '$docs/stores';
+	import Navbar from './layout/Navbar.svelte';
+	import { bg, color } from './stores';
 	import 'highlight.js/styles/atom-one-dark.css';
 </script>
 

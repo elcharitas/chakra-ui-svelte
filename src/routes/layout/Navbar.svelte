@@ -8,7 +8,7 @@
 	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
 
 	import { bg, inputBg, color } from '../stores';
-	import ActionButton from '../components/ActionButton.svelte';
+	import ActionButton from '../../routes/components/ActionButton.svelte';
 </script>
 
 <Box position="fixed" w="100vw">

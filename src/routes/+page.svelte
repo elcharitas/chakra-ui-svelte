@@ -1,5 +1,5 @@
 <script>
-	import Footer from '$docs/layout/Footer.svelte';
+	import Footer from './layout/Footer.svelte';
 	import { Box, Text, Button, Link, Stack } from '$lib/components';
 </script>
 
