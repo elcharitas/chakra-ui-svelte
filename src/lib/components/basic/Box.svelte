@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { forwardEvents, createStyle, chakra, attributes } from '$lib/core';
-	import type { ChakraComponentProps } from '$lib/types';
+	import type { BoxProps } from './Box.svelte';
 
-	type $$Props = ChakraComponentProps;
+	type $$Props = BoxProps;
 
 	export let events = forwardEvents();
 	export const apply: string = 'Box';
