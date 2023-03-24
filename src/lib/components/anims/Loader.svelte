@@ -1,10 +1,7 @@
 <script lang="ts">
-	import type { ChakraComponentProps } from '$lib/types';
-
-	type $$Props = ChakraComponentProps & {
-		size?: $$Props['inlineSize'];
-	};
+	type $$Props = LoaderProps;
 	import Icon from '../basic/Icon.svelte';
+	import type { LoaderProps } from './Loader.svelte';
 	export let size: $$Props['size'] = 24;
 </script>
 
