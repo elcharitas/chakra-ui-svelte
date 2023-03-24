@@ -6,10 +6,10 @@ title: Installation
 
 To use Chakra UI in your project, run one of the following commands in your terminal:
 
-```
-$ npm i chakra-ui-svelte @emotion/css # using default
+```sh
+$ npm i chakra-ui-svelte @emotion/css # using npm
 $ yarn add chakra-ui-svelte @emotion/css # using yarn?
-$ pnpm i chakra-ui-svelte @emotion/css # using pnpm?
+$ pnpm i chakra-ui-svelte @emotion/css # using pnpm? (preferred)
 ```
 
 After installing Chakra UI, you need to set up the `ChakraProvider` at the root of your application.
