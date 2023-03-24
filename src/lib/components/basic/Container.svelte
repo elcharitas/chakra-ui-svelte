@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { forwardEvents } from '$lib/core';
-	import type { ChakraComponentProps } from '$lib/types';
 	import Box from './Box.svelte';
+	import type { ContainerProps } from './Container.svelte';
 
-	type $$Props = ChakraComponentProps;
+	type $$Props = ContainerProps;
 	const events = forwardEvents();
 </script>
 

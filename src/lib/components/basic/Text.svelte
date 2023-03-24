@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ChakraComponentProps } from '$lib/types';
-
-	type $$Props = ChakraComponentProps;
 	import Box from './Box.svelte';
+	import type { TextProps } from './Text.svelte';
+
+	type $$Props = TextProps;
 </script>
 
 <Box as="span" {...$$props}>

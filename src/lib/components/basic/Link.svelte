@@ -1,16 +1,9 @@
 <script lang="ts">
 	import { forwardEvents } from '$lib/core';
-	import type { ChakraComponentProps } from '$lib/types';
 	import Box from './Box.svelte';
+	import type { LinkProps } from './Link.svelte';
 
-	type $$Props = ChakraComponentProps & {
-		/**
-		 * The URL the link points to.
-		 *
-		 * Links are not restricted to HTTP-based URLs — they can use any URL scheme supported by browsers.
-		 */
-		href?: string;
-	};
+	type $$Props = LinkProps;
 	const events = forwardEvents();
 </script>
 
