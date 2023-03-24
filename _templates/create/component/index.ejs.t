@@ -4,10 +4,10 @@ to: src/lib/components/<%= name %>.svelte
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte/internal';
 	import { forwardEvents } from '$lib/core';
-	import type { <%= name %>Props } from './<%= name %>.svelte';
+	import type { <%= name.split('/').reverse()[0] %>Props } from './<%= name.split('/').reverse()[0] %>.svelte';
 	import Box from '$lib/components/basic/Box.svelte';
 
-	type $$Props = <%= name %>Props;
+	type $$Props = <%= name.split('/').reverse()[0] %>Props;
 	const events = forwardEvents();
 
     // underlying element props
