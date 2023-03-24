@@ -1,62 +1,38 @@
-import { css, toCSSVar } from '@chakra-ui/styled-system';
-import { theme } from '$lib/theme';
+import get from 'dash-get';
+import { css, toCSSVar, type StyleConfig } from '@chakra-ui/styled-system';
+import { themeStore } from '$lib/theme';
+import type { ChakraAction, ChakraComponentProps } from '$lib/types';
 import { system, cx } from './emotion';
-import { filter } from '../utils/object';
-
-/**
- * A Chakra UI Svelte component can be created to inherit styles using the `apply` prop.
- * This util allows easy generation of styles based on the value of the `apply` prop.
- * This styles can then be converted into classes later on
- *
- * @param props
- */
-export function extractComponentStyles(props) {
-	let componentStyles = {
-		colorScheme: props.colorScheme
-	};
-	const component = theme?.components[props.apply || props.as];
-	if (typeof component === 'object') {
-		const { baseStyle, variants, sizes, defaultProps } = component;
-		const { variant = defaultProps?.variant, size = defaultProps?.size } = props;
-		const sizeStyle = sizes?.[size];
-		if (!componentStyles.colorScheme) {
-			componentStyles.colorScheme = defaultProps?.colorScheme;
-		}
-		componentStyles = {
-			...componentStyles,
-			...baseStyle,
-			...sizeStyle,
-			...variants?.[variant]?.(componentStyles)
-		};
-	}
-	return componentStyles;
-}
+import { runIfFn, filter } from '$lib/utils';
 
 /**
  * Creates and return a class based on a components props
  *
  * @param props
  */
-export function createStyle(props) {
-	const themeVars = toCSSVar(theme);
-	const componentCSS = css(props)(themeVars);
-	const sxCss = css(props.sx)(themeVars);
-	return cx(system(componentCSS), system(sxCss), props.class);
-}
+export function createStyle<T extends ChakraComponentProps>({ sx, apply, ...props }: T) {
+	const currentTheme = themeStore.get();
+	const themeVars = toCSSVar(currentTheme);
 
-/**
- * Creates and return a class based on a components props and it's applied style
- *
- * @param props
- */
-export function createClass(props, ...classList: string[]) {
-	const safeProps = filter(props, (value) => typeof value !== 'function');
-	const themeVars = toCSSVar(theme);
-	const componentStyles = extractComponentStyles(props);
-	const baseCSS = css(safeProps)(themeVars);
-	const sxCss = css(safeProps.sx || {})(themeVars);
-	const componentCSS = css(componentStyles)(themeVars);
-	return cx(system(componentCSS), system(baseCSS), system(sxCss), ...classList);
+	/** TODO: handle responsive values as well */
+	const applyVal = apply?.toString() || '';
+	const applyAs = applyVal.includes('.') ? applyVal : `components.${applyVal}`;
+
+	const { defaultProps, ...config }: StyleConfig = get(currentTheme, applyAs) || {};
+	const { size, variant, ...safeProps } = { ...defaultProps, ...props };
+
+	const style = css({
+		...config.baseStyle,
+		...config.sizes?.[size],
+		...runIfFn(config.variants?.[variant], safeProps)
+	})(themeVars);
+
+	const customStyle = css({
+		...safeProps,
+		...sx
+	})(themeVars);
+
+	return cx(system(style), system(customStyle), safeProps.class as string);
 }
 
 /**
@@ -65,14 +41,16 @@ export function createClass(props, ...classList: string[]) {
  * @param node
  * @param props
  */
-export function chakra<T>(node: HTMLElement, props: T) {
-	function update(props) {
-		const className = createClass(props, props.class);
+export const chakra: ChakraAction = (node, props) => {
+	const nodeAttrs = Object.getOwnPropertyNames(Object.getPrototypeOf(node));
+	const update = (newProps: typeof props) => {
+		const validProps = filter(newProps, (_, key) => !nodeAttrs.includes(String(key)));
+		const className = createStyle(validProps);
 		node.className = className;
-	}
+	};
 
 	// onMount, set initial class
 	update(props);
 
 	return { update };
-}
+};

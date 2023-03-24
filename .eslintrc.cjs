@@ -8,7 +8,7 @@ module.exports = {
 		'prettier'
 	],
 	plugins: ['svelte3', '@typescript-eslint'],
-	ignorePatterns: ['*.cjs'],
+	ignorePatterns: ['*.cjs', 'package/*'],
 	overrides: [
 		{
 			files: ['*.svelte'],
@@ -24,6 +24,13 @@ module.exports = {
 		'max-params': ['error', 3],
 		'unicorn/prefer-at': ['error', { checkAllIndexAccess: true }],
 		'unicorn/prevent-abbreviations': 'off',
+		'unicorn/filename-case': [
+			'error',
+			{
+				case: 'kebabCase',
+				ignore: ['.*\\.svelte\\.d\\.ts']
+			}
+		],
 		'no-undef': 'off'
 	},
 	settings: {

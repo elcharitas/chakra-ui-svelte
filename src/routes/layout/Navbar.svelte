@@ -7,8 +7,8 @@
 	import FaSun from 'svelte-icons/fa/FaSun.svelte';
 	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
 
-	import { bg, inputBg, color } from '../stores';
-	import ActionButton from '../components/ActionButton.svelte';
+	import { bg } from '../stores';
+	import ActionButton from '../../routes/components/ActionButton.svelte';
 </script>
 
 <Box position="fixed" w="100vw">
@@ -21,31 +21,22 @@
 		alignItems="center"
 		justifyContent="space-around"
 	>
-		<Stack direction="row" spacing={6}>
-			<Link href="/"><Logo /></Link>
+		<Stack spacing={6}>
+			<Link href="/">
+				<Logo />
+			</Link>
+			<Link href="https://github.com/elcharitas/chakra-ui-svelte">
+				<img
+					alt="GitHub Repo stars"
+					src="https://img.shields.io/github/stars/elcharitas/chakra-ui-svelte?style=social"
+					style="height: 1.2rem;"
+				/>
+			</Link>
 		</Stack>
 
 		<Flex justify="center" justifyContent="center" display={{ base: 'none', md: 'flex' }} />
 
 		<Flex justify="right" justifyContent="end">
-			<Input
-				placeholder="Search the docs."
-				sx={{
-					bg: $inputBg,
-					color: $color,
-					width: '300px',
-					fontWeight: 400,
-					fontSize: 'sm',
-					_hover: {
-						bg: $inputBg
-					},
-					_placeholder: {
-						color: 'gray.400'
-					}
-				}}
-				mr="8"
-				display={{ base: 'none', md: 'inline' }}
-			/>
 			<ButtonGroup alignItems="center" justifyContent="space-between">
 				<ActionButton
 					label="Star the Github Repo"

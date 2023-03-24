@@ -13,23 +13,25 @@
 	const events = forwardEvents();
 </script>
 
-<Link {href} {target} {rel}>
-	<Button
-		sx={{
-			bg: 'transparent',
-			'&:hover': {
-				bg: $hoverBg
-			}
-		}}
-		size="xs"
-		display="flex"
-		justifyContent="center"
-		alignItems="center"
-		title={label}
-		{events}
-	>
-		<VisuallyHidden>{label}</VisuallyHidden>
-		<Icon as={SocialIcon} wrap="div" w="4" h="4" color={$color} />
-		<slot />
-	</Button>
-</Link>
+<Button
+	as={href ? 'a' : 'button'}
+	sx={{
+		bg: 'transparent',
+		'&:hover': {
+			bg: $hoverBg
+		}
+	}}
+	size="xs"
+	display="flex"
+	justifyContent="center"
+	alignItems="center"
+	title={label}
+	{href}
+	{target}
+	{rel}
+	{events}
+>
+	<VisuallyHidden>{label}</VisuallyHidden>
+	<Icon as={SocialIcon} wrap="div" w="4" h="4" color={$color} />
+	<slot />
+</Button>

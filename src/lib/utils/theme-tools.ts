@@ -1,4 +1,5 @@
 import type { Theme } from '$lib/theme';
+import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 type Dict = Record<string, unknown>;
 
 /**
@@ -8,8 +9,9 @@ type Dict = Record<string, unknown>;
  * @param dark
  * @returns
  */
-export const mode = <T>(light: T, dark: T): ((properties) => T) => (properties) =>
-	properties.colormode == 'dark' ? dark : light;
+export const mode = <T>(light: T, dark: T): ((properties: StyleFunctionProps) => T) => (
+	properties
+) => (properties.colorMode == 'dark' ? dark : light);
 
 export const getColor = (theme: Dict, color: string, fallback?: string) => {
 	return theme?.colors[color] || fallback;
@@ -31,4 +33,17 @@ export const transparentize = (color: string, opacity: number) => (theme: Theme)
 		' ' +
 		opacity
 	);
+};
+
+/**
+ * Runs a function or return value
+ *
+ * @param value - value to check
+ * @param args - args to pass
+ */
+export const runIfFn = <T extends CallableFunction | Dict>(value: T, ...args: unknown[]) => {
+	if (typeof value === 'function') {
+		return value(...args);
+	}
+	return value;
 };

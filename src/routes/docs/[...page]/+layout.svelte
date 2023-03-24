@@ -1,6 +1,7 @@
 <script>
-	import Footer from '$docs/layout/Footer.svelte';
-	import { Box, Flex } from '$lib/components';
+	import Footer from '../../layout/Footer.svelte';
+	import { color, inputBg } from '../../stores';
+	import { Box, Input, Flex } from '$lib/components';
 </script>
 
 <Flex justify="center" justifyContent="space-evenly" mt={4}>
@@ -13,5 +14,24 @@
 		<slot />
 		<Footer />
 	</Box>
-	<Box p={8} w={{ base: 'full', md: '250px' }}>MENU</Box>
+	<Box p={8} w={{ base: 'full', md: '250px' }}>
+		<Input
+			placeholder="Search the docs."
+			sx={{
+				bg: $inputBg,
+				color: $color,
+				width: '100%',
+				fontWeight: 400,
+				fontSize: 'sm',
+				_hover: {
+					bg: $inputBg
+				},
+				_placeholder: {
+					color: 'gray.400'
+				}
+			}}
+			mr="8"
+			display={{ base: 'none', md: 'inline' }}
+		/>
+	</Box>
 </Flex>

@@ -4,7 +4,6 @@
 	"version": "0.2.4",
 	"type": "module",
 	"main": "./index.js",
-	"types": "./index.d.ts",
 	"homepage": "https://github.com/elcharitas/chakra-ui-svelte",
 	"repository": {
 		"type": "git",
@@ -16,6 +15,7 @@
 		"package": "svelte-kit sync && svelte-package",
 		"preview": "vite preview",
 		"create:component": "hygen create component",
+		"create:typings": "hygen create typings",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -25,7 +25,8 @@
 	},
 	"dependencies": {
 		"@babel/core": "^7.17.9",
-		"@chakra-ui/styled-system": "^2.3.1"
+		"@chakra-ui/styled-system": "^2.3.1",
+		"dash-get": "^1.0.2"
 	},
 	"peerDependencies": {
 		"@emotion/css": "^11.10.5",

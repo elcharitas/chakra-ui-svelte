@@ -1,22 +1,20 @@
 <script lang="ts">
 	import { forwardEvents, createStyle, chakra, attributes } from '$lib/core';
+	import type { BoxProps } from './Box.svelte';
+
+	type $$Props = BoxProps;
 
 	export let events = forwardEvents();
-	export let as: keyof HTMLElementTagNameMap | ConstructorOfATypedSvelteComponent = 'div';
-	export const apply = 'Box';
-	export let wrap: boolean | string = false;
-	export let props = {};
-	export let sx = {};
+	export let as: $$Props['as'] = 'div';
+	export let wrap: $$Props['wrap'] = false;
 	export let noSlot = false;
-
-	const styles = createStyle({ sx, ...props });
 </script>
 
 {#if typeof as === 'string'}
 	{#if noSlot}
-		<svelte:element this={as} use:chakra={$$props} use:attributes={$$props} use:events />
+		<svelte:element this={as} use:chakra={$$restProps} use:attributes={$$restProps} use:events />
 	{:else}
-		<svelte:element this={as} use:chakra={$$props} use:attributes={$$props} use:events>
+		<svelte:element this={as} use:chakra={$$restProps} use:attributes={$$restProps} use:events>
 			<slot />
 		</svelte:element>
 	{/if}
@@ -24,8 +22,8 @@
 	{#if wrap}
 		<svelte:element
 			this={wrap !== true ? wrap : 'div'}
-			use:chakra={$$props}
-			use:attributes={$$props}
+			use:chakra={$$restProps}
+			use:attributes={$$restProps}
 			use:events
 		>
 			<svelte:component this={as}>
@@ -36,9 +34,9 @@
 		<!--
             Components behave differently from elements.
             However, we'd like to add support for them.
-            For now, we'll just pass the props to the component.
+            For now, we'll just pass the restProps to the component.
         -->
-		<svelte:component this={as} class={styles} {...$$props}>
+		<svelte:component this={as} class={createStyle($$restProps.sx)} {...$$restProps}>
 			<slot />
 		</svelte:component>
 	{/if}

@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
 	import { afterUpdate } from 'svelte';
 	import { forwardEvents } from '$lib/core';
 	import Box from '../basic/Box.svelte';
 	import Button from './Button.svelte';
+	import type { RippleButtonProps } from './RippleButton.svelte';
+
+	type $$Props = RippleButtonProps;
 
 	export let isRippling = false;
 
@@ -24,19 +27,16 @@
 			y = -1;
 		}
 	});
+
+	const onClick = (e: CustomEvent<MouseEvent>) => {
+		const target = e.detail.target as HTMLElement;
+		const rect = target.getBoundingClientRect();
+		x = e.detail.clientX - rect.left;
+		y = e.detail.clientY - rect.top;
+	};
 </script>
 
-<Button
-	overflow="hidden"
-	position="relative"
-	on:click={(e) => {
-		const rect = e.target.getBoundingClientRect();
-		x = e.clientX - rect.left;
-		y = e.clientY - rect.top;
-	}}
-	{events}
-	{...$$props}
->
+<Button overflow="hidden" position="relative" on:click={onClick} {events} {...$$restProps}>
 	{#if isRippling}
 		<Box
 			as="span"
@@ -45,16 +45,18 @@
 			position="absolute"
 			background="#63a4ff"
 			display="block"
-			border-radius="9999px"
+			borderRadius="9999px"
 			opacity="1"
 			animation="0.9s ease 1 forwards ripple-effect"
-			style={{
+			sx={{
 				left: x,
 				top: y
-			}}>&nbsp;</Box
+			}}
 		>
+			&nbsp;
+		</Box>
 	{/if}
-	<Box as="span" position="relative" z-index="2">
+	<Box as="span" position="relative" zIndex="2">
 		<slot />
 	</Box>
 </Button>

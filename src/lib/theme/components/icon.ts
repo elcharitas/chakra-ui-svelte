@@ -1,3 +1,5 @@
+import { defineStyleConfig } from '@chakra-ui/styled-system';
+
 const sizes = {
 	lg: {
 		h: 12,
@@ -17,12 +19,10 @@ const sizes = {
 	}
 };
 
-const defaultProps = {
-	size: 'xs',
-	colorScheme: 'gray'
-};
-
-export default {
+export default defineStyleConfig({
 	sizes,
-	defaultProps
-};
+	defaultProps: {
+		size: 'xs',
+		colorScheme: 'gray'
+	}
+});
