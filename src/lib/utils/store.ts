@@ -21,7 +21,7 @@ export function createStore<T>(
 
 	return {
 		initial,
-		get: get.bind({}, store) as T,
+		get: get.bind({}, store) as StoreCallback<T>,
 		...store
 	};
 }
