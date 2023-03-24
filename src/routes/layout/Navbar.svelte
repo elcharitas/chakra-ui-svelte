@@ -7,7 +7,7 @@
 	import FaSun from 'svelte-icons/fa/FaSun.svelte';
 	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
 
-	import { bg, inputBg, color } from '../stores';
+	import { bg } from '../stores';
 	import ActionButton from '../../routes/components/ActionButton.svelte';
 </script>
 
