@@ -25,7 +25,8 @@
 	},
 	"dependencies": {
 		"@babel/core": "^7.17.9",
-		"@chakra-ui/styled-system": "^2.3.1"
+		"@chakra-ui/styled-system": "^2.3.1",
+		"dash-get": "^1.0.2"
 	},
 	"peerDependencies": {
 		"@emotion/css": "^11.10.5",
