@@ -17,6 +17,7 @@ specifiers:
   autoprefixer: ^10.4.2
   babel-loader: ^8.2.3
   commitizen: ^4.3.0
+  dash-get: ^1.0.2
   eslint: ^8.35.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.2.1
@@ -47,6 +48,7 @@ specifiers:
 dependencies:
   '@babel/core': 7.20.7
   '@chakra-ui/styled-system': 2.5.1
+  dash-get: 1.0.2
 
 optionalDependencies:
   highlight.js: 11.7.0
@@ -2382,6 +2384,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /dash-get/1.0.2:
+    resolution: {integrity: sha512-4FbVrHDwfOASx7uQVxeiCTo7ggSdYZbqs8lH+WU6ViypPlDbe9y6IP5VVUDQBv9DcnyaiPT5XT0UWHgJ64zLeQ==}
+    dev: false
+
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -4478,6 +4484,7 @@ packages:
 
   /lunr/2.3.9:
     resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
+    requiresBuild: true
     dev: false
     optional: true
 
