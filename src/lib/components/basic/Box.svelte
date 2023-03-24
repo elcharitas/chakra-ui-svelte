@@ -5,20 +5,16 @@
 	type $$Props = BoxProps;
 
 	export let events = forwardEvents();
-	export const apply: $$Props['apply'] = 'Box';
 	export let as: $$Props['as'] = 'div';
 	export let wrap: $$Props['wrap'] = false;
-	export let sx = {};
 	export let noSlot = false;
-
-	const styles = createStyle({ sx });
 </script>
 
 {#if typeof as === 'string'}
 	{#if noSlot}
-		<svelte:element this={as} use:chakra={$$props} use:attributes={$$restProps} use:events />
+		<svelte:element this={as} use:chakra={$$restProps} use:attributes={$$restProps} use:events />
 	{:else}
-		<svelte:element this={as} use:chakra={$$props} use:attributes={$$restProps} use:events>
+		<svelte:element this={as} use:chakra={$$restProps} use:attributes={$$restProps} use:events>
 			<slot />
 		</svelte:element>
 	{/if}
@@ -26,7 +22,7 @@
 	{#if wrap}
 		<svelte:element
 			this={wrap !== true ? wrap : 'div'}
-			use:chakra={$$props}
+			use:chakra={$$restProps}
 			use:attributes={$$restProps}
 			use:events
 		>
@@ -38,9 +34,9 @@
 		<!--
             Components behave differently from elements.
             However, we'd like to add support for them.
-            For now, we'll just pass the props to the component.
+            For now, we'll just pass the restProps to the component.
         -->
-		<svelte:component this={as} class={styles} {...$$restProps}>
+		<svelte:component this={as} class={createStyle($$restProps.sx)} {...$$restProps}>
 			<slot />
 		</svelte:component>
 	{/if}

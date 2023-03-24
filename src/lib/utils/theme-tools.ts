@@ -34,3 +34,16 @@ export const transparentize = (color: string, opacity: number) => (theme: Theme)
 		opacity
 	);
 };
+
+/**
+ * Runs a function or return value
+ *
+ * @param value - value to check
+ * @param args - args to pass
+ */
+export const runIfFn = <T extends CallableFunction | Dict>(value: T, ...args: unknown[]) => {
+	if (typeof value === 'function') {
+		return value(...args);
+	}
+	return value;
+};

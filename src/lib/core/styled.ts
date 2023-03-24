@@ -1,24 +1,38 @@
-import { css, toCSSVar } from '@chakra-ui/styled-system';
+import get from 'dash-get';
+import { css, toCSSVar, type StyleConfig } from '@chakra-ui/styled-system';
 import { themeStore } from '$lib/theme';
 import type { ChakraAction, ChakraComponentProps } from '$lib/types';
 import { system, cx } from './emotion';
-import { filter } from '../utils/object';
+import { runIfFn, filter } from '$lib/utils';
 
 /**
  * Creates and return a class based on a components props
  *
  * @param props
  */
-export function createStyle<T extends ChakraComponentProps>(props: T) {
-	const safeProps = filter<T>(
-		props,
-		(value, key) => typeof value !== 'function' || key in ['as', 'wrap']
-	);
+export function createStyle<T extends ChakraComponentProps>({ sx, apply, ...props }: T) {
 	const currentTheme = themeStore.get();
 	const themeVars = toCSSVar(currentTheme);
-	const componentCSS = css(safeProps)(themeVars);
-	const sxCss = css(safeProps.sx)(themeVars);
-	return cx(system(componentCSS), system(sxCss), safeProps.class);
+
+	/** TODO: handle responsive values as well */
+	const applyVal = apply?.toString() || '';
+	const applyAs = applyVal.includes('.') ? applyVal : `components.${applyVal}`;
+
+	const { defaultProps, ...config }: StyleConfig = get(currentTheme, applyAs) || {};
+	const { size, variant, ...safeProps } = { ...defaultProps, ...props };
+
+	const style = css({
+		...config.baseStyle,
+		...config.sizes?.[size],
+		...runIfFn(config.variants?.[variant], safeProps)
+	})(themeVars);
+
+	const customStyle = css({
+		...safeProps,
+		...sx
+	})(themeVars);
+
+	return cx(system(style), system(customStyle), safeProps.class as string);
 }
 
 /**
@@ -28,8 +42,10 @@ export function createStyle<T extends ChakraComponentProps>(props: T) {
  * @param props
  */
 export const chakra: ChakraAction = (node, props) => {
+	const nodeAttrs = Object.getOwnPropertyNames(Object.getPrototypeOf(node));
 	const update = (newProps: typeof props) => {
-		const className = createStyle(newProps);
+		const validProps = filter(newProps, (_, key) => !nodeAttrs.includes(String(key)));
+		const className = createStyle(validProps);
 		node.className = className;
 	};
 
