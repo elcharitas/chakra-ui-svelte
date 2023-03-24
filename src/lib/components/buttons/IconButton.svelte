@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { forwardEvents } from '$lib/core';
-	import Button from './Button.svelte';
 	import Icon from '$lib/components/basic/Icon.svelte';
+	import Button from './Button.svelte';
+	import type { IconButtonProps } from './IconButton.svelte';
 
-	export let icon: string;
-	export let wrap = 'div';
+	type $$Props = IconButtonProps ;
+	export let icon: $$Props['as'];
+	export let wrap: $$Props['wrap'] = 'div';
 	const events = forwardEvents();
 </script>
 

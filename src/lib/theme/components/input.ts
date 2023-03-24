@@ -1,3 +1,4 @@
+import { defineStyleConfig, type StyleFunctionProps } from '@chakra-ui/styled-system';
 import { mode, getColor } from '$lib/utils';
 
 const baseStyle = {
@@ -41,7 +42,7 @@ const sizes = {
 	}
 };
 
-function getDefaults(properties: Record<string, string>) {
+function getDefaults(properties: StyleFunctionProps) {
 	const { focusBorderColor: fc, errorBorderColor: ec } = properties;
 	return {
 		focusBorderColor: fc || mode('blue.500', 'blue.300')(properties),
@@ -49,7 +50,7 @@ function getDefaults(properties: Record<string, string>) {
 	};
 }
 
-const variantOutline = (properties) => {
+const variantOutline = (properties: StyleFunctionProps) => {
 	const { theme } = properties;
 	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(properties);
 
@@ -76,7 +77,7 @@ const variantOutline = (properties) => {
 	};
 };
 
-const variantFilled = (properties) => {
+const variantFilled = (properties: StyleFunctionProps) => {
 	const { theme } = properties;
 	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(properties);
 
@@ -101,7 +102,7 @@ const variantFilled = (properties) => {
 	};
 };
 
-const variantFlushed = (properties) => {
+const variantFlushed = (properties: StyleFunctionProps) => {
 	const { theme } = properties;
 	const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(properties);
 
@@ -139,7 +140,7 @@ const variants = {
 	unstyled: variantUnstyled
 };
 
-export default {
+export default defineStyleConfig({
 	baseStyle,
 	sizes,
 	variants,
@@ -148,4 +149,4 @@ export default {
 		variant: 'outline',
 		colorScheme: 'gray'
 	}
-};
+});

@@ -1,11 +1,13 @@
 <script lang="ts">
-	import Flex from './Flex.svelte';
 	import { forwardEvents } from '$lib/core';
+	import Flex from './Flex.svelte';
+	import type { StackProps } from './Stack.svelte';
 
+	type $$Props = StackProps;
 	const events = forwardEvents();
 
 	export const spacing = 2;
-	export const orientation: 'vertical' | 'horizontal' | undefined = undefined;
+	export const orientation: $$Props['orientation'] = undefined;
 </script>
 
 <Flex

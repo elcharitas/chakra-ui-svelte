@@ -1,3 +1,5 @@
+import { defineStyleConfig } from '@chakra-ui/styled-system';
+
 const baseStyle = {
 	padding: 0,
 	height: 'auto',
@@ -31,12 +33,10 @@ const baseStyle = {
 	}
 };
 
-const defaultProps = {
-	size: 'md',
-	colorScheme: 'primary'
-};
-
-export default {
+export default defineStyleConfig({
 	baseStyle,
-	defaultProps
-};
+	defaultProps: {
+		size: 'md',
+		colorScheme: 'primary'
+	}
+});

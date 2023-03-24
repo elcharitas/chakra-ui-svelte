@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import { colorModeValue } from '$lib/stores';
 	import Box from './Box.svelte';
+	import type { LogoProps } from './Logo.svelte';
 
+	type $$Props = LogoProps;
 	const color = colorModeValue('#2D3748', '#e5e5e5');
 </script>
 

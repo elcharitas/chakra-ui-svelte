@@ -1,3 +1,4 @@
+import { defineStyleConfig } from '@chakra-ui/styled-system';
 import { mode, transparentize } from '$lib/utils';
 
 const baseStyle = {
@@ -177,15 +178,13 @@ const sizes = {
 	}
 };
 
-const defaultProps = {
-	variant: 'solid',
-	size: 'md',
-	colorScheme: 'gray'
-};
-
-export default {
+export default defineStyleConfig({
 	baseStyle,
 	variants,
 	sizes,
-	defaultProps
-};
+	defaultProps: {
+		variant: 'solid',
+		size: 'md',
+		colorScheme: 'gray'
+	}
+});

@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { forwardEvents, createStyle, chakra, attributes } from '$lib/core';
+	import type { BoxProps } from './Box.svelte';
+
+	type $$Props = BoxProps;
 
 	export let events = forwardEvents();
-	export let as: keyof HTMLElementTagNameMap | ConstructorOfATypedSvelteComponent = 'div';
-	export const apply = 'Box';
-	export let wrap: boolean | string = false;
-	export let props = {};
+	export const apply: $$Props['apply'] = 'Box';
+	export let as: $$Props['as'] = 'div';
+	export let wrap: $$Props['wrap'] = false;
 	export let sx = {};
 	export let noSlot = false;
 
-	const styles = createStyle({ sx, ...props });
+	const styles = createStyle({ sx });
 </script>
 
 {#if typeof as === 'string'}

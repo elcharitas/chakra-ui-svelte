@@ -1,10 +1,9 @@
-import { writable } from 'svelte/store';
+import { createStore } from '$lib/utils';
 
-import * as components from './components';
 import core from './core';
-import type { ThemeConfig, ThemeDirection } from './theme.types';
-
-const direction: ThemeDirection = 'ltr';
+import { styles } from './styles';
+import * as components from './components';
+import type { ThemeConfig } from './theme.types';
 
 const config: ThemeConfig = {
 	useSystemColorMode: false,
@@ -12,16 +11,16 @@ const config: ThemeConfig = {
 	cssVarPrefix: 'chakra'
 };
 
-export const theme = {
-	direction,
-	components,
-	...core,
-	config
-};
-
 export type Theme = typeof theme;
 
-export const themeStore = writable<Theme>(theme);
+export const theme = {
+	...core,
+	...config,
+	components,
+	styles
+};
+
+export const themeStore = createStore<Theme>(() => theme);
 themeStore.subscribe((newTheme) => {
 	Object.assign(theme, newTheme);
 });

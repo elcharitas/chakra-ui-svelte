@@ -1,16 +1,21 @@
 export type Dict<T = unknown> = Record<string, T>;
 
-export function omit<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
-	const result: Dict = {};
-
-	for (const key of Object.keys(object)) {
-		if (keys.includes(key as K)) continue;
-		result[key] = object[key];
-	}
-
-	return result as Omit<T, K>;
+/**
+ * Omit keys from an object
+ *
+ * @param object
+ * @param keys
+ */
+export function omit<T extends Dict>(object: T, keys: (keyof T)[]) {
+	return filter(object, (_, key) => !keys.includes(key));
 }
 
+/**
+ * Filter an object by a predicate function
+ *
+ * @param object
+ * @param predicate
+ */
 export function filter<T extends Dict>(
 	object: T,
 	predicate: (value: T[keyof T], key: keyof T) => boolean
@@ -25,14 +30,12 @@ export function filter<T extends Dict>(
 	return result;
 }
 
-export function pick<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
-	const result = {} as { [P in K]: T[P] };
-
-	for (const key of keys) {
-		if (key in object) {
-			result[key] = object[key];
-		}
-	}
-
-	return result;
+/**
+ * Pick a subset of keys from an object
+ *
+ * @param object
+ * @param keys
+ */
+export function pick<T extends Dict>(object: T, keys: (keyof T)[]) {
+	return filter(object, (_, key) => keys.includes(key));
 }

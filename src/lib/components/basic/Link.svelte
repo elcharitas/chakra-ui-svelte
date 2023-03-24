@@ -1,11 +1,12 @@
-<script>
-	import Box from './Box.svelte';
+<script lang="ts">
 	import { forwardEvents } from '$lib/core';
+	import Box from './Box.svelte';
+	import type { LinkProps } from './Link.svelte';
 
+	type $$Props = LinkProps;
 	const events = forwardEvents();
-	export let href = '#';
 </script>
 
-<Box as="a" apply="Link" props={{ href }} {events} {...$$restProps}>
+<Box as="a" apply="Link" {events} {...$$restProps}>
 	<slot />
 </Box>

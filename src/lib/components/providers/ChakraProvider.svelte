@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { theme as baseTheme } from '$lib/theme';
+	import type { Theme } from '$lib/theme';
 	import GlobalStyles from './GlobalStyles.svelte';
 
-	export let theme: typeof baseTheme;
+	/**
+	 * The theme object
+	 */
+	export let theme: Theme | undefined;
 	export let styles = {};
 
 	let isComponentMounted = false;
