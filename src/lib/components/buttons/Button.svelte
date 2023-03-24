@@ -1,16 +1,9 @@
 <script lang="ts">
 	import { forwardEvents } from '$lib/core';
-	import type { ChakraComponentProps } from '$lib/types';
 	import Box from '$lib/components/basic/Box.svelte';
+	import type { ButtonProps } from './Button.svelte';
 
-	type $$Props = ChakraComponentProps & {
-		/**
-		 * The styled variant of the button.
-		 *
-		 * @default solid
-		 */
-		variant?: 'solid' | 'outline' | 'ghost' | 'link' | 'unstyled';
-	};
+	type $$Props = ButtonProps;
 	const events = forwardEvents();
 </script>
 

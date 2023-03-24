@@ -1,16 +1,11 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
 	import { forwardEvents } from '$lib/core';
-	import type { ChakraComponentProps } from '$lib/types';
 	import Box from '../basic/Box.svelte';
 	import Button from './Button.svelte';
+	import type { RippleButtonProps } from './RippleButton.svelte';
 
-	type $$Props = ChakraComponentProps & {
-		/**
-		 * Whether the button is currently rippling.
-		 */
-		isRippling: boolean;
-	};
+	type $$Props = RippleButtonProps;
 
 	export let isRippling = false;
 
