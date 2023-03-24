@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type { ChakraComponentProps } from '$lib/types';
+	import type { StackProps } from './HStack.svelte';
 	import Stack from './Stack.svelte';
-	type $$Props = ChakraComponentProps & {
-		spacing?: $$Props['gap'];
-	};
+	type $$Props = StackProps
 	export let spacing: $$Props['gap'] = 2;
 </script>
 

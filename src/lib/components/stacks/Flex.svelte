@@ -1,12 +1,9 @@
 <script lang="ts">
-	import type { ChakraComponentProps } from '$lib/types';
 	import Box from '$lib/components/basic/Box.svelte';
 	import { forwardEvents } from '$lib/core';
+	import type { FlexProps } from './Flex.svelte';
 
-	type $$Props = ChakraComponentProps & {
-		direction?: $$Props['flexDirection'];
-	};
-
+	type $$Props = FlexProps;
 	const events = forwardEvents();
 	export const direction = 'row';
 </script>

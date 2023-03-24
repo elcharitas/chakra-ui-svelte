@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { ChakraComponentProps } from '$lib/types';
 	import Stack from './Stack.svelte';
+	import type { StackProps } from './VStack.svelte';
 
-    
-	export let spacing = 2;
+	type $$Props = StackProps;
+	export let spacing: $$Props['spacing'] = 2;
 </script>
 
 <Stack {spacing} orientation="vertical" {...$$restProps}>
