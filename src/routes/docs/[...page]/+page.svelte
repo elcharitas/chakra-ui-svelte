@@ -1,7 +1,7 @@
 <script>
-	export let data;
+	import { page } from '$app/stores';
 </script>
 
-{#await import(`../pages/${data.slug}.md`) then { default: component }}
+{#await import(`../pages/${$page.params.page}.md`) then { default: component }}
 	<svelte:component this={component} />
 {/await}

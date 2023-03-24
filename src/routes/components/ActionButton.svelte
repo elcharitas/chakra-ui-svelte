@@ -1,5 +1,5 @@
 <script>
-	import { Button, Icon, Link, VisuallyHidden } from '$lib/components';
+	import { Button, Icon, VisuallyHidden } from '$lib/components';
 	import { forwardEvents } from '$lib/core';
 
 	import { hoverBg, color } from '../stores';

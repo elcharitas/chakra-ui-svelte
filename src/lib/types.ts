@@ -35,7 +35,9 @@ export type ChakraComponentProps = StyleProps & {
 	 */
 	wrap?: boolean | ChakraElementAs;
 	/** Styles applied to a component */
-	sx?: StyleProps;
+	sx?: StyleProps & {
+		[rule: string]: string | number | StyleProps;
+	};
 	/** Props applied to underlying element */
 	props?: Record<string, string>;
 	/** A drilled action which would bubble events to the next available element */
