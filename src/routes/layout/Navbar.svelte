@@ -1,5 +1,5 @@
 <script>
-	import { Box, Flex, Stack, ButtonGroup, Input, Logo, Link } from '$lib/components';
+	import { Box, Flex, Stack, ButtonGroup, Logo, Link } from '$lib/components';
 	import { colorMode } from '$lib/stores';
 
 	import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';

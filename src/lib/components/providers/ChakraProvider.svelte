@@ -6,7 +6,8 @@
 	/**
 	 * The theme object
 	 */
-	export let theme: Theme | undefined;
+	// eslint-disable-next-line unicorn/no-useless-undefined
+	export let theme: Theme | undefined = undefined;
 	export let styles = {};
 
 	let isComponentMounted = false;
