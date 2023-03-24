@@ -22,7 +22,7 @@ export const attributes: ChakraAction = (node, nodeProps) => {
 		// Set the valid attributes on the element.
 		for (const attribute of validAttributes) {
 			if (attribute in props && typeof props[attribute] !== 'function') {
-				node.setAttribute(attribute, props[attribute]);
+				node.setAttribute(attribute, props[attribute] as string);
 			}
 		}
 	};

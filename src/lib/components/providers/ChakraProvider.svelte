@@ -6,7 +6,7 @@
 	/**
 	 * The theme object
 	 */
-	export let theme: Theme | undefined = undefined;
+	export let theme: Theme | undefined;
 	export let styles = {};
 
 	let isComponentMounted = false;

@@ -5,7 +5,7 @@
 	type $$Props = BoxProps;
 
 	export let events = forwardEvents();
-	export const apply: string = 'Box';
+	export const apply: $$Props['apply'] = 'Box';
 	export let as: $$Props['as'] = 'div';
 	export let wrap: $$Props['wrap'] = false;
 	export let sx = {};

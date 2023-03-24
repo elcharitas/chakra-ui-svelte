@@ -1,4 +1,4 @@
-export type Dict<T = any> = Record<string, T>;
+export type Dict<T = unknown> = Record<string, T>;
 
 /**
  * Omit keys from an object
@@ -6,15 +6,8 @@ export type Dict<T = any> = Record<string, T>;
  * @param object
  * @param keys
  */
-export function omit<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
-	const result: Dict = {};
-
-	for (const key of Object.keys(object)) {
-		if (keys.includes(key as K)) continue;
-		result[key] = object[key];
-	}
-
-	return result as Omit<T, K>;
+export function omit<T extends Dict>(object: T, keys: (keyof T)[]) {
+	return filter(object, (_, key) => !keys.includes(key));
 }
 
 /**
@@ -43,41 +36,6 @@ export function filter<T extends Dict>(
  * @param object
  * @param keys
  */
-export function pick<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
-	const result = {} as { [P in K]: T[P] };
-
-	for (const key of keys) {
-		if (key in object) {
-			result[key] = object[key];
-		}
-	}
-
-	return result;
-}
-
-/**
- * Deeply merge two objects.
- * If a key exists in both objects, the value from the second object will be used.
- *
- * @param obj1
- * @param obj2
- */
-export function deepMerge<T extends Dict>(obj1: Partial<T>, obj2: Partial<T>) {
-	const result = { ...obj1 };
-	for (const key in obj2) {
-		if (obj2.hasOwnProperty(key)) {
-			if (
-				typeof obj2[key] === 'object' &&
-				!Array.isArray(obj2[key]) &&
-				obj1.hasOwnProperty(key) &&
-				typeof obj1[key] === 'object' &&
-				!Array.isArray(obj1[key])
-			) {
-				result[key] = deepMerge(obj1[key], obj2[key]) as T[Extract<keyof T, string>];
-			} else {
-				result[key] = obj2[key];
-			}
-		}
-	}
-	return result;
+export function pick<T extends Dict>(object: T, keys: (keyof T)[]) {
+	return filter(object, (_, key) => keys.includes(key));
 }

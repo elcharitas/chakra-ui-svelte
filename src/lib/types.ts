@@ -15,6 +15,8 @@ export type ChakraActionNoProps = (node: Element) => ChakraActionCycle;
 export type ChakraElementAs = keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
 
 export type ChakraComponentProps = StyleProps & {
+	[key: string]: unknown;
+
 	/**
 	 * The class name to apply to the component.
 	 */
@@ -35,7 +37,7 @@ export type ChakraComponentProps = StyleProps & {
 	/** Styles applied to a component */
 	sx?: StyleProps;
 	/** Props applied to underlying element */
-	props?: Record<string, any>;
+	props?: Record<string, string>;
 	/** A drilled action which would bubble events to the next available element */
 	events?: ChakraActionNoProps;
 	/**
