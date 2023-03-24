@@ -1,3 +1,11 @@
+## 0.2.5 (2023-03-24)
+
+### Fix
+
+- chakra action styling bug (#62)
+- minor cleanups and ci improvements (#61)
+- Use stricter component types definitions (#59)
+
 ## 0.2.4 (2023-03-19)
 
 ### Fix
