@@ -6,6 +6,10 @@ on:
       - edited
       - synchronize
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   lint_commits:
     runs-on: ubuntu-latest

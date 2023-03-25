@@ -1,10 +1,15 @@
 name: Run Svelte & Types Check
 
 on:
+  workflow_dispatch: # on button click
   pull_request_target:
     types:
       - edited
       - synchronize
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   publish:
