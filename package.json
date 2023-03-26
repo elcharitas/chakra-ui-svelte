@@ -48,7 +48,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
 		"@typescript-eslint/parser": "^5.10.1",
 		"autoprefixer": "^10.4.2",
-		"babel-loader": "^8.2.3",
+		"babel-loader": "^9.1.2",
 		"commitizen": "^4.3.0",
 		"eslint": "^8.35.0",
 		"eslint-config-prettier": "^8.3.0",
