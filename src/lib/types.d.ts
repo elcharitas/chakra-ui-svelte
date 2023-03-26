@@ -1,5 +1,15 @@
 import type { StyleProps } from '@chakra-ui/styled-system';
 
+declare global {
+	// eslint-disable-next-line @typescript-eslint/no-namespace
+	namespace jest {
+		interface Matchers<R> {
+			toBeInTheDocument(): R;
+			toHaveAttribute(name: string, value: string): R;
+		}
+	}
+}
+
 export type ChakraActionCycle<T = unknown> = {
 	destroy?: () => void;
 	update?: (newProps: T) => void;
@@ -14,7 +24,7 @@ export type ChakraActionNoProps = (node: Element) => ChakraActionCycle;
 
 export type ChakraElementAs = keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
 
-export type ChakraComponentProps = StyleProps & {
+export interface ChakraComponentProps extends StyleProps {
 	[key: string]: unknown;
 
 	/**
@@ -49,4 +59,4 @@ export type ChakraComponentProps = StyleProps & {
 	 * Defaults to `false`.
 	 */
 	noSlot?: boolean;
-};
+}

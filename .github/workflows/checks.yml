@@ -24,3 +24,4 @@ jobs:
       - run: pnpm i
       - run: pnpm lint
       - run: pnpm svelte-check
+      - run: pnpm test
