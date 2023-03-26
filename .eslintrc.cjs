@@ -28,7 +28,7 @@ module.exports = {
 			'error',
 			{
 				case: 'kebabCase',
-				ignore: ['.*\\.svelte\\.d\\.ts']
+				ignore: ['.*\\.svelte\\.d\\.ts', '.*\\.spec\\.ts']
 			}
 		],
 		'no-undef': 'off'
