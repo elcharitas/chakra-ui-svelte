@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   lint_commits:
+    if: '! github.event.pull_request.draft'
     name: Lint Commit Messages
     runs-on: ubuntu-latest
     steps:
