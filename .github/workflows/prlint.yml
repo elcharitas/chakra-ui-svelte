@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   main:
-    if: '! github.event.pull_request.draft'
+    if: github.event.pull_request.draft == false
     name: Validate PR title
     runs-on: ubuntu-latest
     steps:
