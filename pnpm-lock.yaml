@@ -23,7 +23,7 @@ specifiers:
   dash-get: ^1.0.2
   eslint: ^8.35.0
   eslint-config-prettier: ^8.3.0
-  eslint-plugin-svelte3: ^3.2.1
+  eslint-plugin-svelte3: ^4.0.0
   eslint-plugin-unicorn: ^46.0.0
   highlight.js: ^11.7.0
   html-webpack-plugin: ^5.5.0
@@ -76,7 +76,7 @@ devDependencies:
   commitizen: 4.3.0
   eslint: 8.35.0
   eslint-config-prettier: 8.5.0_eslint@8.35.0
-  eslint-plugin-svelte3: 3.4.1_uqzw5zgbbnhvvhrjlqyp7xtptu
+  eslint-plugin-svelte3: 4.0.0_uqzw5zgbbnhvvhrjlqyp7xtptu
   eslint-plugin-unicorn: 46.0.0_eslint@8.35.0
   html-webpack-plugin: 5.5.0
   husky: 8.0.3
@@ -2400,11 +2400,10 @@ packages:
       eslint: 8.35.0
     dev: true
 
-  /eslint-plugin-svelte3/3.4.1_uqzw5zgbbnhvvhrjlqyp7xtptu:
-    resolution: {integrity: sha512-7p59WG8qV8L6wLdl4d/c3mdjkgVglQCdv5XOTk/iNPBKXuuV+Q0eFP5Wa6iJd/G2M1qR3BkLPEzaANOqKAZczw==}
-    engines: {node: '>=10'}
+  /eslint-plugin-svelte3/4.0.0_uqzw5zgbbnhvvhrjlqyp7xtptu:
+    resolution: {integrity: sha512-OIx9lgaNzD02+MDFNLw0GEUbuovNcglg+wnd/UY0fbZmlQSz7GlQiQ1f+yX0XvC07XPcDOnFcichqI3xCwp71g==}
     peerDependencies:
-      eslint: '>=6.0.0'
+      eslint: '>=8.0.0'
       svelte: ^3.2.0
     dependencies:
       eslint: 8.35.0
