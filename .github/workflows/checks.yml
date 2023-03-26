@@ -4,6 +4,7 @@ on:
   workflow_dispatch: # on button click
   pull_request_target:
     types:
+      - opened
       - edited
       - synchronize
 
@@ -13,6 +14,7 @@ concurrency:
 
 jobs:
   run-checks:
+    if: github.event.pull_request.draft == false
     name: Run Svelte-Check & Lint
     runs-on: ubuntu-latest
     steps:

@@ -3,6 +3,7 @@ name: Lint Commits Messages
 on:
   pull_request_target:
     types:
+      - opened
       - edited
       - synchronize
 
@@ -12,6 +13,7 @@ concurrency:
 
 jobs:
   lint_commits:
+    if: github.event.pull_request.draft == false
     name: Lint Commit Messages
     runs-on: ubuntu-latest
     steps:
