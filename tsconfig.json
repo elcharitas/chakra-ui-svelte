@@ -4,6 +4,7 @@
 		"paths": {
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"]
-		}
+		},
+        "types": ["vitest/globals", "vite/client"]
 	}
 }
