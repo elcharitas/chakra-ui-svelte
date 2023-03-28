@@ -20,7 +20,7 @@ jobs:
             node-version: 16
       - run: npm i -g husky pnpm
       - run: pnpm install --no-optional
-      # - run: pnpm test
+      - run: pnpm test
   tag-and-bump:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     needs: install-and-test

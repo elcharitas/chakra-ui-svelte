@@ -3,11 +3,18 @@ name: Lint Commits Messages
 on:
   pull_request_target:
     types:
+      - opened
       - edited
       - synchronize
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   lint_commits:
+    if: github.event.pull_request.draft == false
+    name: Lint Commit Messages
     runs-on: ubuntu-latest
     steps:
       - name: Lint commits
@@ -15,7 +22,7 @@ jobs:
         id: lint-commits
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          regex: '^(feat|chore|fix|refactor|docs)(\((ui|api|ops|style)\))*(!*): .+' # e.g.) "feat(api): Add /users/get"
+          regex: '^(feat|chore|fix|refactor|docs)(\(([\w]+)\))*(!*): .+' # e.g.) "feat(api): Add /users/get"
           format: markdown
 
       - name: Post warning comment

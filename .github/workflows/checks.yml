@@ -1,13 +1,21 @@
 name: Run Svelte & Types Check
 
 on:
+  workflow_dispatch: # on button click
   pull_request_target:
     types:
+      - opened
       - edited
       - synchronize
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
-  publish:
+  run-checks:
+    if: github.event.pull_request.draft == false
+    name: Run Svelte-Check & Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,3 +26,4 @@ jobs:
       - run: pnpm i
       - run: pnpm lint
       - run: pnpm svelte-check
+      - run: pnpm test

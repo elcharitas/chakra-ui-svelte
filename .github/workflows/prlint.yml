@@ -3,11 +3,17 @@ name: Lint PR Title
 on:
   pull_request_target:
     types:
+      - opened
       - edited
       - synchronize
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   main:
+    if: github.event.pull_request.draft == false
     name: Validate PR title
     runs-on: ubuntu-latest
     steps:
