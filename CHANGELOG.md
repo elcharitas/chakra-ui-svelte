@@ -1,3 +1,9 @@
+## 0.2.7 (2023-03-28)
+
+### Fix
+
+- align icon button items to center (#82)
+
 ## 0.2.6 (2023-03-24)
 
 ### Fix
