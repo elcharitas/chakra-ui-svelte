@@ -4,12 +4,13 @@
 	import Button from './Button.svelte';
 	import type { IconButtonProps } from './IconButton.svelte';
 
-	type $$Props = IconButtonProps ;
+	type $$Props = IconButtonProps;
 	export let icon: $$Props['as'];
 	export let wrap: $$Props['wrap'] = 'div';
 	const events = forwardEvents();
 </script>
 
-<Button {events} {...$$restProps}>
+<Button {events} display="flex" justifyContent="center" alignItems="center" {...$$restProps}>
 	<Icon as={icon} {wrap} />
+	<slot />
 </Button>
